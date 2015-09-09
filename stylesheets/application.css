@@ -1,0 +1,261 @@
+@import url(../../../stylesheets/application.css);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,700,300);
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  background: #fff;
+  font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,h2,h3,h4,h5,
+p, span, b,i, strong, input {
+  font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+}
+h1,h2,h3,h4,h5 {
+  color: #205B75;
+  font-weight: 900;
+}
+
+a, a:link, a:visited {
+  color: #398BB3;
+  text-decoration: none;
+}
+a:hover, a:active {
+  color: #4ca5d1;
+  text-decoration: underline;
+}
+
+table td {
+  padding: 0.25em;
+}
+table .context-menu-selection,
+table .context-menu-selection:hover {
+  background-color: #4ca5d1 !important;
+}
+div.issue {
+  padding: 10px;
+  background-color: rgba(76,165,209,0.1);
+  border-color: rgba(76,165,209,0.2);
+}
+
+.box {
+  padding: 10px;
+  background-color: rgba(76,165,209,0.1);
+  border-color: rgba(76,165,209,0.2);
+  color: #353E42;
+}
+
+#header {
+  left: 0;
+  bottom: 0;
+  width: 18em;
+  padding: 10px 0 0;
+  background: #4ca5d1;
+  background: #4ca5d1 url('../images/logo-synbioz.png') no-repeat bottom 20px center;
+  background-size: 70%;
+  box-shadow: inset -2px 0 10px rgba(0,0,0,0.2);
+  }
+  #header > h1 {
+    padding: 15px 15px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #fff;
+    background: none;
+  }
+
+#main {
+  left: 18em;
+  right: 0;
+  bottom: 0;
+  margin: 14px auto;
+  max-width: 1600px;
+  background: none;
+  overflow: scroll;
+}
+
+#main,
+#header {
+  padding: 0;
+  position: absolute;
+  top: 2.35em;
+}
+
+#main-menu {
+  left: 0;
+  top: 12em;
+  bottom: auto;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  }
+  #main-menu li {
+    display: block;
+    width: 100%;
+  }
+  #main-menu li a {
+    font-size: 1.14em;
+    font-weight: 600;
+    padding: 0.5em 1em;
+    transition: all 0.1s;
+  }
+  #main-menu li a.selected {
+    background: rgba(255,255,255,0.9);
+    color: #4ca5d1;
+    text-shadow: none;
+  }
+  #main-menu li a:active {
+    background: rgba(255,255,255,0.2);
+  }
+  #main-menu li a:hover {
+    background: rgba(255,255,255,0.1);
+  }
+
+#project_quick_jump_box {
+  width: 100%;
+  height: 2em;
+  margin-top: 10px;
+  border: 1px solid #398BB3;
+  border-radius: 3px;
+  color: #398BB3;
+  font-size: 1em;
+}
+
+#quick-search {
+  width: 100%;
+  padding: 0 15px;
+  position: absolute;
+  top: 60px;
+}
+#quick-search #q {
+  display: block;
+  width: 100%;
+  padding: 0.4em 0.8em;
+  -webkit-appearance: none;
+  border: 1px solid #398BB3;
+  border-radius: 3px;
+}
+
+#top-menu {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3em;
+  padding: 0.75em 10px 0 20px;
+  text-transform: uppercase;
+  background: #205B75;
+}
+.controller-wiki #content {
+  max-width: 800px;
+}
+.wiki-page {
+  font-size: 1em;
+  line-height: 1.4em;
+  margin: 0 auto;
+  }
+  .wiki-page a {
+    color: #1a719c;
+    text-decoration: underline;
+  }
+  .wiki-page h1 {
+    font-size: 2em;
+    font-weight: 700;
+  }
+  .wiki-page h1,
+  .wiki-page h2,
+  .wiki-page h3,
+  .wiki-page h4,
+  .wiki-page h5 {
+    line-height: 1.2;
+    font-weight: 600;
+    margin: 1.2em 0 0.4em;
+  }
+  .wiki-page h2 {font-size: 1.7em;}
+  .wiki-page h3 {font-size: 1.5em;}
+  .wiki-page h4 {font-size: 1.2em;}
+  .wiki-page h5 {font-size: 1em;}
+
+  div#content > h2,
+  div#content h2.contacts_header,
+  div#content > div.filters h2,
+  div#content > #add-news > h2,
+  div#content > #add-message > h2,
+  div#content > .message.details > h2,
+  div#content > .board.details > h2,
+  div#content > #add-document > h2 {
+    background: none;
+    border-top: 0;
+    padding: 15px 0;
+  }
+
+#content {
+  border: 0;
+  box-shadow: none;
+  padding: 0 20px;
+}
+
+#footer {
+  display: none;
+}
+
+/*.priority-1 {
+  background: ;
+}
+.priority-2 {
+  background: ;
+}*/
+.priority-3 {
+  background: rgba(76,165,209,0.1);
+}
+.priority-4 {
+  background: rgba(76,165,209,0.2);
+}
+.priority-5 {
+  background: rgba(76,165,209,0.3);
+}
+
+.button-small,
+input[type="submit"] {
+  -webkit-appearance: none;
+  cursor: pointer;
+  border: none;
+  background-color: #4ca5d1;
+  font-size: 1em;
+  color: #fff;
+  padding: 0.4em 0.8em;
+  border-radius: 1em;
+  transition: all 0.1s;
+}
+.button-small:hover,
+input[type="submit"]:hover {
+  background-color: rgba(76,165,209,0.8);
+  transform: translateY(-2px);
+}
+#login-form table {
+  padding: 3em 2em;
+  background: rgba(76,165,209,0.1);
+  border: 0;
+  border-left: 3px solid #4ca5d1;
+}
+
+@media screen and (min-width: 1200px) {
+  body {
+    font-size: 13px;
+  }
+}
+@media screen and (min-width: 1400px) {
+  body {
+    font-size: 14px;
+  }
+}/*
+@media screen and (min-width: 1600px) {
+  body {
+    font-size: 15px;
+  }
+}*/
