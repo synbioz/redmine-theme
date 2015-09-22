@@ -29,6 +29,9 @@ a:hover, a:active {
   text-decoration: underline;
 }
 
+#sidebar a.selected {
+  background-color: #398BB3;
+}
 table td {
   padding: 0.25em;
 }
@@ -67,6 +70,16 @@ div.issue {
     color: #fff;
     background: none;
   }
+
+
+
+.controller-wiki #main,
+.controller-boards #main,
+.controller-messages #main {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
 
 #main {
   left: 18em;
@@ -150,9 +163,6 @@ div.issue {
   padding: 0.75em 10px 0 20px;
   text-transform: uppercase;
   background: #205B75;
-}
-.controller-wiki #content {
-  max-width: 800px;
 }
 .wiki-page {
   font-size: 1em;
@@ -329,11 +339,6 @@ div.wiki ul.toc.right {
 .list.boards tr,
 .list.messages tr{
   border-bottom: 1px solid #eee;
-}
-.controller-messages #content,
-.controller-boards #content{
-  max-width: 1024px;
-  margin: 0 auto;
 }
 .message.reply {
   padding-left: 2em;
