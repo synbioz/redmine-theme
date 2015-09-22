@@ -263,27 +263,27 @@ input[type="submit"]:hover {
   transform: translateY(-2px);
 }
 
-[href*='status_id%5D=2'] {
+.actions .link-button[href*='status_id%5D=2'] {
   background: #4CA5D1;
 }
 
-[href*='status_id%5D=3'] {
+.actions .link-button[href*='status_id%5D=3'] {
   background: #85BC2E;
 }
 
-[href*='status_id%5D=4'] {
+.actions .link-button[href*='status_id%5D=4'] {
   background: #205B75;
 }
 
-[href*='status_id%5D=5'] {
+.actions .link-button[href*='status_id%5D=5'] {
   background: #E96112;
 }
 
-[href*='status_id%5D=6'] {
+.actions .link-button[href*='status_id%5D=6'] {
   background: #D0021B;
 }
 
-[href*='status_id%5D=14'] {
+.actions .link-button[href*='status_id%5D=14'] {
   background: #EAA22B;
 }
 
