@@ -293,18 +293,26 @@ div.wiki ul.toc.right {
 
 
 /* FORUM */
+.list.boards,
 .list.messages {
   border: 0;
 }
+.list.boards th,
 .list.messages th{
   background: none;
   font-weight: 600;
 }
+.list.boards th,
+.list.boards td,
 .list.messages th,
 .list.messages td {
   padding: 10px 15px;
   vertical-align: middle;
 }
+.list.boards th:first-child,
+.list.boards th:nth-child(2),
+.list.boards td:first-child,
+.list.boards td:nth-child(2),
 .list.messages th:first-child,
 .list.messages th:nth-child(2),
 .list.messages td:first-child,
@@ -312,15 +320,19 @@ div.wiki ul.toc.right {
   text-align: left;
 }
 
+.list.boards th:last-child,
+.list.boards td:last-child,
 .list.messages th:last-child,
 .list.messages td:last-child {
   text-align: right
 }
+.list.boards tr,
 .list.messages tr{
   border-bottom: 1px solid #eee;
 }
-.controller-messages #content{
-  max-width: 800px;
+.controller-messages #content,
+.controller-boards #content{
+  max-width: 1024px;
   margin: 0 auto;
 }
 .message.reply {
