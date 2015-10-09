@@ -15,6 +15,10 @@ h1,h2,h3,h4,h5,
 p, span, b,i, strong, input {
   font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
 }
+code span,
+pre span {
+  font-family: 'Consolas', monospace;
+}
 h1,h2,h3,h4,h5 {
   color: #205B75;
   font-weight: 900;
@@ -113,19 +117,22 @@ div.issue {
   #main-menu li a {
     font-size: 1.14em;
     font-weight: 600;
-    padding: 0.5em 1em;
+    padding: 0.6em 1em;
     transition: all 0.1s;
   }
-  #main-menu li a.selected {
-    background: rgba(255,255,255,0.9);
-    color: #4ca5d1;
-    text-shadow: none;
+  #main-menu li a:hover {
+    padding-left: 1.4em;
+    background: rgba(255,255,255,0.2);
   }
   #main-menu li a:active {
     background: rgba(255,255,255,0.2);
   }
-  #main-menu li a:hover {
-    background: rgba(255,255,255,0.1);
+  #main-menu li a.selected,
+  #main-menu li a.selected:hover {
+    background: #fff;
+    color: #4ca5d1;
+    text-shadow: none;
+    box-shadow: 0 1px 10px rgba(0,0,0,0.2);
   }
 
 #project_quick_jump_box {
@@ -207,7 +214,7 @@ div.issue {
 #content {
   border: 0;
   box-shadow: none;
-  padding: 20px;
+  padding: 2em 3em;
 }
 #content h2 {
   padding: 0;
@@ -215,22 +222,6 @@ div.issue {
 
 #footer {
   display: none;
-}
-
-/*.priority-1 {
-  background: ;
-}
-.priority-2 {
-  background: ;
-}*/
-.priority-3 {
-  background: rgba(76,165,209,0.1);
-}
-.priority-4 {
-  background: rgba(76,165,209,0.2);
-}
-.priority-5 {
-  background: rgba(76,165,209,0.3);
 }
 
 .button-small,
@@ -248,6 +239,8 @@ input[type="submit"] {
 .button-small:hover,
 input[type="submit"]:hover {
   background-color: rgba(76,165,209,0.8);
+  -webkit-transform: translateY(-2px);
+  -ms-transform: translateY(-2px);
   transform: translateY(-2px);
 }
 #login-form table {
@@ -270,6 +263,8 @@ input[type="submit"]:hover {
 }
 
 .actions .link-button:hover {
+  -webkit-transform: translateY(-2px);
+  -ms-transform: translateY(-2px);
   transform: translateY(-2px);
 }
 
@@ -300,57 +295,67 @@ input[type="submit"]:hover {
 div.wiki ul.toc.right {
   clear: right;
 }
+div.wiki pre {
+  margin: 1em 0;
+  padding: 1em;
+}
+div.wiki pre:hover {
+  overflow: visible;
+}
 
 
 /* FORUM */
-.list.boards,
-.list.messages {
+table.list{
   border: 0;
 }
-.list.boards th,
-.list.messages th{
+table.list th{
   background: none;
   font-weight: 600;
 }
-.list.boards th,
-.list.boards td,
-.list.messages th,
-.list.messages td {
-  padding: 10px 15px;
-  vertical-align: middle;
-}
-.list.boards th:first-child,
-.list.boards th:nth-child(2),
-.list.boards td:first-child,
-.list.boards td:nth-child(2),
-.list.messages th:first-child,
-.list.messages th:nth-child(2),
-.list.messages td:first-child,
-.list.messages td:nth-child(2) {
+table.list th,
+table.list td {
+  padding: 0.5em 0.675em;
+  vertical-align: top;
   text-align: left;
 }
-
-.list.boards th:last-child,
-.list.boards td:last-child,
-.list.messages th:last-child,
-.list.messages td:last-child {
-  text-align: right
+table.list td.checkbox {
+  padding: 0.5em 0.675em;
 }
-.list.boards tr,
-.list.messages tr{
-  border-bottom: 1px solid #eee;
+table.list tr {
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.05s ease-in-out;
+}
+table.list tbody tr:hover {
+  background: rgba(76,165,209,0.2);
 }
 .message.reply {
   padding-left: 2em;
 }
 
-tr.message.odd {
-  background: none
-}
 tr.message td.subject {
   font-size: 1.2em;
+  padding-left: 0.8em;
+}
+.odd {
+  background: none;
 }
 
+
+/*.priority-1 {
+  background: ;
+}
+.priority-2 {
+  background: ;
+}*/
+.priority-3 {
+  background: rgba(76,165,209,0.05);
+}
+.priority-4 {
+  background: rgba(76,165,209,0.1);
+}
+.priority-5 {
+  background: rgba(76,165,209,0.15);
+}
 
 .author {
   font-style: italic;
