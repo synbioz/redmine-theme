@@ -299,10 +299,6 @@ div.wiki pre {
   margin: 1em 0;
   padding: 1em;
 }
-div.wiki pre:hover {
-  overflow: visible;
-}
-
 
 /* FORUM */
 table.list{
@@ -348,13 +344,16 @@ tr.message td.subject {
   background: ;
 }*/
 .priority-3 {
-  background: rgba(76,165,209,0.05);
-}
-.priority-4 {
   background: rgba(76,165,209,0.1);
 }
-.priority-5 {
+.priority-4 {
   background: rgba(76,165,209,0.15);
+}
+.priority-5 {
+  background: rgba(76,165,209,0.2);
+}
+.priority-6 {
+  background: rgba(76,165,209,0.25);
 }
 
 .author {
