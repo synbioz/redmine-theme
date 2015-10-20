@@ -36,13 +36,6 @@ a:hover, a:active {
 #sidebar a.selected {
   background-color: #398BB3;
 }
-table td {
-  padding: 0.25em;
-}
-table .context-menu-selection,
-table .context-menu-selection:hover {
-  background-color: #4ca5d1 !important;
-}
 div.issue {
   padding: 10px;
   background-color: rgba(76,165,209,0.1);
@@ -301,27 +294,37 @@ div.wiki pre {
 }
 
 /* FORUM */
-table.list{
+
+
+table td {
+  padding: 0.25em;
+}
+.context-menu-selection,
+.context-menu-selection:hover {
+  background-color: #4ca5d1 !important;
+}
+
+.list{
   border: 0;
 }
-table.list th{
+.list th{
   background: none;
   font-weight: 600;
 }
-table.list th,
-table.list td {
+.list th,
+.list td {
   padding: 0.5em 0.675em;
   vertical-align: top;
   text-align: left;
 }
-table.list td.checkbox {
+.list td.checkbox {
   padding: 0.5em 0.675em;
 }
-table.list tr {
+.list tr {
   border-bottom: 1px solid rgba(0,0,0,0.05);
   transition: all 0.05s ease-in-out;
 }
-table.list tbody tr:hover {
+.list tbody tr:hover {
   background: rgba(76,165,209,0.2);
 }
 .message.reply {
@@ -337,23 +340,34 @@ tr.message td.subject {
 }
 
 
-/*.priority-1 {
-  background: ;
+.list .priority-1,
+.list .priority-lowest {
+  background: #fff;
+  border-bottom: 1px solid rgba(76,165,209,0.1);
 }
-.priority-2 {
-  background: ;
-}*/
-.priority-3 {
+.list .priority-2,
+.list .priority-default {
+  background: #fff;
+  border-bottom: 1px solid rgba(76,165,209,0.15);
+}
+.list .priority-3,
+.list .priority-high3  {
   background: rgba(76,165,209,0.1);
+  border-bottom: 1px solid rgba(76,165,209,0.2);
 }
-.priority-4 {
-  background: rgba(76,165,209,0.15);
-}
-.priority-5 {
+.list .priority-4,
+.list .priority-high2  {
   background: rgba(76,165,209,0.2);
+  border-bottom: 1px solid rgba(76,165,209,0.3);
 }
-.priority-6 {
-  background: rgba(76,165,209,0.25);
+.list .priority-5,
+.list .priority-highest  {
+  background: rgba(76,165,209,0.3);
+  border-bottom: 1px solid rgba(76,165,209,0.4);
+}
+.list .priority-6 {
+  background: rgba(76,165,209,0.4);
+  border-bottom: 1px solid rgba(76,165,209,0.5);
 }
 
 .author {
