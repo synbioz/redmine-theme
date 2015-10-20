@@ -304,27 +304,27 @@ table td {
   background-color: #4ca5d1 !important;
 }
 
-.list{
+table.list{
   border: 0;
 }
-.list th{
+table.list th {
   background: none;
   font-weight: 600;
 }
-.list th,
-.list td {
+table.list th,
+table.list td {
   padding: 0.5em 0.675em;
   vertical-align: top;
   text-align: left;
 }
-.list td.checkbox {
+table.list td.checkbox {
   padding: 0.5em 0.675em;
 }
-.list tr {
+table.list tr {
   border-bottom: 1px solid rgba(0,0,0,0.05);
   transition: all 0.05s ease-in-out;
 }
-.list tbody tr:hover {
+table.list tbody tr:hover {
   background: rgba(76,165,209,0.2);
 }
 .message.reply {
