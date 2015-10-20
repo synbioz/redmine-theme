@@ -212,10 +212,10 @@ div.issue {
 #content h2 {
   padding: 0;
 }
-
+/*
 #footer {
   display: none;
-}
+}*/
 
 .button-small,
 input[type="submit"] {
@@ -339,33 +339,27 @@ tr.message td.subject {
   background: none;
 }
 
-
-.list .priority-1,
 .list .priority-lowest {
   background: #fff;
   border-bottom: 1px solid rgba(76,165,209,0.1);
 }
-.list .priority-2,
 .list .priority-default {
-  background: #fff;
-  border-bottom: 1px solid rgba(76,165,209,0.15);
+  background: rgba(76,165,209,0.05);
+  border-bottom: 1px solid rgba(76,165,209,0.1);
 }
-.list .priority-3,
-.list .priority-high3  {
+.list .priority-high4  {
   background: rgba(76,165,209,0.1);
   border-bottom: 1px solid rgba(76,165,209,0.2);
 }
-.list .priority-4,
-.list .priority-high2  {
+.list .priority-high3 {
   background: rgba(76,165,209,0.2);
   border-bottom: 1px solid rgba(76,165,209,0.3);
 }
-.list .priority-5,
-.list .priority-highest  {
+.list .priority-high2  {
   background: rgba(76,165,209,0.3);
   border-bottom: 1px solid rgba(76,165,209,0.4);
 }
-.list .priority-6 {
+.list .priority-highest {
   background: rgba(76,165,209,0.4);
   border-bottom: 1px solid rgba(76,165,209,0.5);
 }
