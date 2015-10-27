@@ -10,8 +10,6 @@ body {
   font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
-
-h1,h2,h3,h4,h5,
 p, span, b,i, strong, input {
   font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
 }
@@ -20,6 +18,7 @@ pre span {
   font-family: 'Consolas', monospace;
 }
 h1,h2,h3,h4,h5 {
+  font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
   color: #205B75;
   font-weight: 900;
 }
@@ -40,6 +39,24 @@ div.issue {
   padding: 10px;
   background-color: rgba(76,165,209,0.1);
   border-color: rgba(76,165,209,0.2);
+}
+
+img.gravatar {
+  position: relative;
+  border: 0;
+}
+
+div.issue img.gravatar {
+  margin-right: 15px;
+  padding: 0;
+  border: 0;
+  border-radius: 1px;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.9),
+  0 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+p.author {
+  margin-top: 5px;
 }
 
 .box {
@@ -148,6 +165,7 @@ div.issue {
   display: block;
   width: 100%;
   padding: 0.4em 0.8em;
+  -moz-appearance: none;
   -webkit-appearance: none;
   border: 1px solid #398BB3;
   border-radius: 3px;
