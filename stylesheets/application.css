@@ -86,7 +86,7 @@ p.author {
   }
 
 #context-menu {
-  position: fixed;
+  position: fixed !important;
 }
 
 .controller-wiki #main,
