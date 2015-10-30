@@ -85,7 +85,9 @@ p.author {
     background: none;
   }
 
-
+#context-menu {
+  position: fixed;
+}
 
 .controller-wiki #main,
 .controller-boards #main,
