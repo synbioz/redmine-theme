@@ -35,17 +35,16 @@ a:hover, a:active {
 #sidebar a.selected {
   background-color: #398BB3;
 }
+
 div.issue {
   padding: 10px;
   background-color: rgba(76,165,209,0.1);
   border-color: rgba(76,165,209,0.2);
 }
-
 img.gravatar {
   position: relative;
   border: 0;
 }
-
 div.issue img.gravatar {
   margin-right: 15px;
   padding: 0;
@@ -55,6 +54,10 @@ div.issue img.gravatar {
   0 1px 1px 3px rgba(0,0,0,0.2);
 }
 
+.author {
+  font-style: italic;
+  color: grey;
+}
 p.author {
   margin-top: 5px;
 }
@@ -232,10 +235,6 @@ p.author {
 #content h2 {
   padding: 0;
 }
-/*
-#footer {
-  display: none;
-}*/
 
 .button-small,
 input[type="submit"] {
@@ -319,8 +318,8 @@ div.wiki pre {
 table td {
   padding: 0.25em;
 }
-.context-menu-selection,
-.context-menu-selection:hover {
+.list .context-menu-selection,
+.list .context-menu-selection:hover {
   background-color: #4ca5d1 !important;
 }
 
@@ -359,35 +358,37 @@ tr.message td.subject {
   background: none;
 }
 
-.list .priority-lowest {
-  background: #fff;
-  border-bottom: 1px solid rgba(76,165,209,0.1);
+table.list td.checkbox {
+  padding: 0.35em 0.4em;
 }
-.list .priority-default {
-  background: rgba(76,165,209,0.05);
-  border-bottom: 1px solid rgba(76,165,209,0.1);
-}
-.list .priority-high4  {
-  background: rgba(76,165,209,0.1);
-  border-bottom: 1px solid rgba(76,165,209,0.2);
-}
-.list .priority-high3 {
-  background: rgba(76,165,209,0.2);
-  border-bottom: 1px solid rgba(76,165,209,0.3);
-}
-.list .priority-high2  {
-  background: rgba(76,165,209,0.3);
-  border-bottom: 1px solid rgba(76,165,209,0.4);
-}
-.list .priority-highest {
-  background: rgba(76,165,209,0.4);
-  border-bottom: 1px solid rgba(76,165,209,0.5);
+.list .issue{
+  border: 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  background: none;
 }
 
-.author {
+.list .issue.priority-lowest .subject a{
   font-style: italic;
-  color: grey;
 }
+.list .issue.priority-default .subject a{
+  /*color: #333;*/
+}
+.list .issue.priority-high4  .subject a {
+  color: #F5A623;
+}
+.list .issue.priority-high3 .subject a {
+  color: #F48223;
+  font-weight: 600;
+}
+.list .issue.priority-high2  .subject a {
+  color: #F55E23;
+  font-weight: 600;
+}
+.list .issue.priority-highest .subject a {
+  color: #C91B1D;
+  font-weight: 600;
+}
+
 
 
 @media screen and (min-width: 1200px) {
