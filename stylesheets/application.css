@@ -74,6 +74,7 @@ p.author {
   bottom: 0;
   width: 18em;
   padding: 10px 0 0;
+  overflow: hidden;
   background: #4ca5d1;
   background: #4ca5d1 url('../images/logo-synbioz.png') no-repeat bottom 20px center;
   background-size: 70%;
@@ -107,7 +108,6 @@ p.author {
   bottom: 0;
   margin: 0;
   overflow: auto;
-  max-width: 1600px;
   background: none;
 }
 
@@ -293,9 +293,10 @@ p.author {
   }
 
 #content {
+  max-width: 1600px;
+  padding: 2em 3em;
   border: 0;
   box-shadow: none;
-  padding: 2em 3em;
 }
 #content h2 {
   padding: 0;
@@ -452,34 +453,34 @@ table.list td.checkbox {
   font-weight: 600;
 }
 
-
-@media screen and (max-width: 1250px) {
-  body:not(.showMenu) #header {
-    width: 5em;
-    background-size: 300%;
-    background-position: bottom 10px left 10px;
-  }
-  body:not(.showMenu) #header > h1 {
-    padding: 1em 1em 0;
-    color: transparent;
-    text-overflow: clip;
-  }
-  body:not(.showMenu) #header > h1:first-letter {
-    color: #fff;
-  }
-  body:not(.showMenu) #quick-search label {
-    visibility: hidden;
-  }
-  body:not(.showMenu) #q {
-    background: url('../images/icons/search.png') center center no-repeat;
-  }/*
-  body:not(.showMenu) #main-menu {
-    top: 10em;
-  }*/
-  body:not(.showMenu) #main {
-    left: 5em;
-  }
+/* Small menu */
+body:not(.showMenu) #header {
+  width: 4.4em;
+  background-size: 300%;
+  background-position: bottom 10px left 10px;
 }
+body:not(.showMenu) #header > h1 {
+  padding: 0.8em 0.8em 0;
+  color: transparent;
+  text-overflow: clip;
+}
+body:not(.showMenu) #header > h1:first-letter {
+  color: #fff;
+}
+body:not(.showMenu) #quick-search label {
+  visibility: hidden;
+}
+body:not(.showMenu) #q {
+  background: url('../images/icons/search.png') center center no-repeat;
+}/*
+body:not(.showMenu) #main-menu {
+  top: 10em;
+}*/
+body:not(.showMenu) #main {
+  left: 4.4em;
+}
+
+
 @media screen and (min-width: 1250px) {
   body {
     font-size: 13px;
