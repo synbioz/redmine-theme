@@ -472,10 +472,10 @@ body:not(.showMenu) #quick-search label {
 }
 body:not(.showMenu) #q {
   background: url('../images/icons/search.png') center center no-repeat;
-}/*
-body:not(.showMenu) #main-menu {
-  top: 10em;
-}*/
+}
+body:not(.showMenu) #main-menu a {
+  color: transparent;
+}
 body:not(.showMenu) #main {
   left: 4.4em;
 }
