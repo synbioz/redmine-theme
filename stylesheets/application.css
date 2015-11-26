@@ -474,7 +474,7 @@ body:not(.showMenu) #q {
   background: url('../images/icons/search.png') center center no-repeat;
 }
 body:not(.showMenu) #main-menu a {
-  color: transparent;
+  color: transparent !important;
 }
 body:not(.showMenu) #main {
   left: 4.4em;
