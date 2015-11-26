@@ -7,4 +7,10 @@ $(document).on('ready page:load', function () {
       $submenu.css('margin-top', overflow);
     }
   });
+  $('#q').focus( function () {
+    $('body').addClass('showMenu')
+  });
+  $('#q').blur( function () {
+    $('body').removeClass('showMenu')
+  });
 });
