@@ -468,6 +468,8 @@ body:not(.showMenu) #header > h1 {
   top: 0.5em;
   font-size: 1.6em;
   color: #4ca5d1;
+}body:not(.showMenu) #header > h1 .root {
+  color: #4ca5d1;
 }
 body:not(.showMenu) label[for="q"] {
   display: none;
