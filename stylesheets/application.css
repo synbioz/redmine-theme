@@ -4,7 +4,9 @@
 *, *:before, *:after {
   box-sizing: border-box;
 }
-
+html {
+  overflow-y: auto;
+}
 body {
   background: #fff;
   font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
@@ -74,7 +76,6 @@ p.author {
   bottom: 0;
   width: 18em;
   padding: 10px 0 0;
-  overflow: hidden;
   background: #4ca5d1;
   background: #4ca5d1 url('../images/logo-synbioz.png') no-repeat bottom 20px center;
   background-size: 70%;
@@ -160,7 +161,7 @@ p.author {
 #main-menu > ul > li > a:before {
   content: '';
   position: absolute;
-  left: 15px;
+  left: 0.875em;
   top: 0.5em;
   width: 30px;
   height: 30px;
@@ -460,18 +461,29 @@ body:not(.showMenu) #header {
   background-position: bottom 10px left 10px;
 }
 body:not(.showMenu) #header > h1 {
-  padding: 0.8em 0.8em 0;
-  color: transparent;
-  text-overflow: clip;
+  position: absolute;
+  z-index: 1;
+  padding: 0;
+  left: 4.7em;
+  top: 0.5em;
+  font-size: 1.6em;
+  color: #4ca5d1;
 }
-body:not(.showMenu) #header > h1:first-letter {
-  color: #fff;
-}
-body:not(.showMenu) #quick-search label {
-  visibility: hidden;
+body:not(.showMenu) label[for="q"] {
+  display: none;
 }
 body:not(.showMenu) #q {
   background: url('../images/icons/search.png') center center no-repeat;
+}
+body:not(.showMenu) #project_quick_jump_box {
+  cursor: pointer;
+  -webkit-appearance: none;
+  background: transparent url('../images/icons/projects.png') center center no-repeat;
+  color: transparent;
+  border: 0;
+}
+body:not(.showMenu) #project_quick_jump_box:hover {
+  background: rgba(255,255,255,0.1) url('../images/icons/projects.png') center center no-repeat;
 }
 body:not(.showMenu) #main-menu a {
   color: transparent !important;
