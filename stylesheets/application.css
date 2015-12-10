@@ -95,9 +95,9 @@ p.author {
   position: fixed !important;
 }
 
-.controller-wiki #main,
-.controller-boards #main,
-.controller-messages #main {
+.controller-wiki #main #content,
+.controller-boards #main #content,
+.controller-messages #main #content {
   max-width: 1024px;
   margin: 0 auto;
 }
