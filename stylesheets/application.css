@@ -454,44 +454,46 @@ table.list td.checkbox {
   font-weight: 600;
 }
 
-/* Small menu */
-body:not(.showMenu) #header {
-  width: 4.4em;
-  background-size: 300%;
-  background-position: bottom 10px left 10px;
-}
-body:not(.showMenu) #header > h1 {
-  position: absolute;
-  z-index: 1;
-  padding: 0;
-  left: 4.7em;
-  top: 0.5em;
-  font-size: 1.6em;
-  color: #4ca5d1;
-}body:not(.showMenu) #header > h1 .root {
-  color: #4ca5d1;
-}
-body:not(.showMenu) label[for="q"] {
-  display: none;
-}
-body:not(.showMenu) #q {
-  background: url('../images/icons/search.png') center center no-repeat;
-}
-body:not(.showMenu) #project_quick_jump_box {
-  cursor: pointer;
-  -webkit-appearance: none;
-  background: transparent url('../images/icons/projects.png') center center no-repeat;
-  color: transparent;
-  border: 0;
-}
-body:not(.showMenu) #project_quick_jump_box:hover {
-  background: rgba(255,255,255,0.1) url('../images/icons/projects.png') center center no-repeat;
-}
-body:not(.showMenu) #main-menu a {
-  color: transparent !important;
-}
-body:not(.showMenu) #main {
-  left: 4.4em;
+@media screen and (max-width: 1024px) {
+  /* Small menu */
+  body:not(.showMenu) #header {
+    width: 4.4em;
+    background-size: 300%;
+    background-position: bottom 10px left 10px;
+  }
+  body:not(.showMenu) #header > h1 {
+    position: absolute;
+    z-index: 1;
+    padding: 0;
+    left: 4.7em;
+    top: 0.5em;
+    font-size: 1.6em;
+    color: #4ca5d1;
+  }body:not(.showMenu) #header > h1 .root {
+    color: #4ca5d1;
+  }
+  body:not(.showMenu) label[for="q"] {
+    display: none;
+  }
+  body:not(.showMenu) #q {
+    background: url('../images/icons/search.png') center center no-repeat;
+  }
+  body:not(.showMenu) #project_quick_jump_box {
+    cursor: pointer;
+    -webkit-appearance: none;
+    background: transparent url('../images/icons/projects.png') center center no-repeat;
+    color: transparent;
+    border: 0;
+  }
+  body:not(.showMenu) #project_quick_jump_box:hover {
+    background: rgba(255,255,255,0.1) url('../images/icons/projects.png') center center no-repeat;
+  }
+  body:not(.showMenu) #main-menu a {
+    color: transparent !important;
+  }
+  body:not(.showMenu) #main {
+    left: 4.4em;
+  }
 }
 
 
