@@ -94,6 +94,15 @@ p.author {
 #context-menu {
   position: fixed !important;
 }
+#context-menu .submenu:before {
+  content: '';
+  position: absolute;
+  background: transparent;
+  top: -10%;
+  left: 0;
+  width: 110%;
+  height: 120%;
+}
 
 .controller-wiki #main #content,
 .controller-boards #main #content,
