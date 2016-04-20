@@ -132,9 +132,10 @@ p.author {
 #main-menu {
   left: 0;
   top: 12em;
-  bottom: auto;
+  bottom: 5em;
   margin: 0;
   overflow: hidden;
+  overflow-y: auto;
   padding: 0;
   }
   #main-menu li {
@@ -300,6 +301,9 @@ p.author {
     background: none;
     border-top: 0;
     padding: 15px 0;
+  }
+  div.wiki-page .contextual a {
+    opacity: 0.6
   }
 
 #content {
