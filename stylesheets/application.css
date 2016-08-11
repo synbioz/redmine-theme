@@ -1,5 +1,4 @@
 @import url(../../../stylesheets/application.css);
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,700,300);
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -9,20 +8,24 @@ html {
 }
 body {
   background: #fff;
-  font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 p, span, b,i, strong, input {
-  font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
 }
 code span,
 pre span {
   font-family: 'Consolas', monospace;
 }
 h1,h2,h3,h4,h5 {
-  font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
   color: #205B75;
-  font-weight: 900;
+}
+
+body, p, h1,h2,h3,h4,h5, li {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 700;
 }
 
 a, a:link, a:visited {
@@ -33,6 +36,34 @@ a:hover, a:active {
   color: #4ca5d1;
   text-decoration: underline;
 }
+
+#main {
+  background: #f2f2f2;
+}
+#main, #header {
+    top: 2.125em;
+}
+
+#header {
+  left: 0;
+  bottom: 0;
+  width: 18em;
+  padding: 10px 0 0;
+  background: #4ca5d1;
+  background: #4ca5d1 url('../images/logo-synbioz.png') no-repeat bottom 20px center;
+  background-size: 70%;
+  /*box-shadow: inset -2px 0 10px rgba(0,0,0,0.2);*/
+  }
+  #header > h1 {
+    padding: 15px 15px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #fff;
+    background: none;
+    transition: all 0.2s;
+  }
+
 
 #sidebar a.selected {
   background-color: #398BB3;
@@ -70,27 +101,6 @@ p.author {
   border-color: rgba(76,165,209,0.2);
   color: #353E42;
 }
-
-#header {
-  left: 0;
-  bottom: 0;
-  width: 18em;
-  padding: 10px 0 0;
-  background: #4ca5d1;
-  background: #4ca5d1 url('../images/logo-synbioz.png') no-repeat bottom 20px center;
-  background-size: 70%;
-  /*box-shadow: inset -2px 0 10px rgba(0,0,0,0.2);*/
-  }
-  #header > h1 {
-    padding: 15px 15px 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: #fff;
-    background: none;
-    transition: all 0.2s;
-  }
-
 #context-menu {
   position: fixed !important;
 }
@@ -103,12 +113,16 @@ p.author {
   width: 110%;
   height: 120%;
 }
+#context-menu li.folder > ul {
+  left: 145px;
+}
+
 
 .controller-wiki #main #content,
 .controller-boards #main #content,
 .controller-messages #main #content {
   max-width: 1024px;
-  margin: 0 auto;
+  margin: 0;
 }
 
 
@@ -258,7 +272,7 @@ p.author {
   top: 0;
   left: 0;
   right: 0;
-  height: 3em;
+  height: 2.8em;
   padding: 0.75em 10px 0 20px;
   text-transform: uppercase;
   background: #205B75;
@@ -307,6 +321,7 @@ p.author {
   }
 
 #content {
+  min-height: 95vh;
   max-width: 1600px;
   padding: 2em 3em;
   border: 0;
@@ -549,8 +564,6 @@ table.list td.checkbox {
     font-size: 15px;
   }
 }*/
-
-
 
 
 
