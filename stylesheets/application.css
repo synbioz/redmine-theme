@@ -37,11 +37,22 @@ a:hover, a:active {
   text-decoration: underline;
 }
 
+
 #main {
+  left: 18em;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  overflow: auto;
   background: #f2f2f2;
 }
-#main, #header {
-    top: 2.125em;
+
+#main,
+#header {
+  padding: 0;
+  position: absolute;
+  top: 2.125em;
+  transition: all 0.2s;
 }
 
 #header {
@@ -114,7 +125,7 @@ p.author {
   height: 120%;
 }
 #context-menu li.folder > ul {
-  left: 145px;
+  left: 145px !important;
 }
 
 
@@ -125,23 +136,6 @@ p.author {
   margin: 0;
 }
 
-
-#main {
-  left: 18em;
-  right: 0;
-  bottom: 0;
-  margin: 0;
-  overflow: auto;
-  background: none;
-}
-
-#main,
-#header {
-  padding: 0;
-  position: absolute;
-  top: 2.35em;
-  transition: all 0.2s;
-}
 
 #main-menu {
   left: 0;
@@ -320,8 +314,8 @@ p.author {
     opacity: 0.6
   }
 
-#content {
-  min-height: 95vh;
+html>body #content {
+  min-height: calc(100vh - 2.8em);
   max-width: 1600px;
   padding: 2em 3em;
   border: 0;
