@@ -1,0 +1,444 @@
+@import url(../../../stylesheets/application.css)
+
+$black: #333
+$blue: #4ca5d1
+$dark-blue: #205B75
+$code-background: #d6f1ff
+$main-bg: #eaf8ff
+$sidebar-width: 18rem
+$icons: ('overview', 'activity', 'roadmap', 'issues', 'new-issue', 'gantt', 'calendar', 'news', 'documents', 'wiki', 'boards', 'files', 'settings', 'repository')
+
+*, *:before, *:after
+  box-sizing: border-box
+
+html
+  overflow-y: auto
+
+body
+  color: $black
+  -webkit-font-smoothing: antialiased
+
+code span, pre span
+  font-family: 'Consolas', monospace
+
+body, p, h1 ,h2 ,h3 ,h4 ,h5 , li
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+
+h1, h2, h3, h4, h5
+  color: $dark-blue
+  font-weight: 700
+
+a, a:link, a:visited
+  color: #398BB3
+  text-decoration: none
+
+a:hover, a:active
+  color: $blue
+  text-decoration: underline
+
+
+#query_form_content
+  font-size: 1em
+
+fieldset.collapsible
+  padding: 1em
+  background: rgba($blue,0.1)
+  border: 0
+  border-top: 1px solid rgba($blue,0.2)
+  transition: all 0.1s ease-in-out
+  margin-bottom: 2em
+  legend
+    font-weight: 600
+    color: $dark-blue
+
+fieldset.collapsed
+  padding: 0
+  background: transparent
+  border-top: 1px solid rgba($dark-blue,0.3)
+
+html > body #content
+  min-height: calc(100vh - 2.8em)
+  max-width: 1220px
+  padding: 2em 3em
+  border: 0
+  box-shadow: none
+
+#content h2
+  padding: 0
+
+html > body  #content
+  box-shadow: 1px 0 1px rgba(0,0,0,0.05)
+html > body  #header
+  box-shadow: inset -1px 0 1px rgba(0,0,0,0.05)
+
+#main
+  left: $sidebar-width
+  right: 0
+  bottom: 0
+  margin: 0
+  overflow: auto
+  background: $main-bg
+
+#main, #header
+  padding: 0
+  position: absolute
+  top: 2.125em
+  transition: all 0.2s
+
+#header
+  left: 0
+  bottom: 0
+  width: $sidebar-width
+  padding: 10px 0 0
+  background: $blue
+  background: $blue url('../images/logo-synbioz.png') no-repeat bottom 20px center
+  background-size: 70%
+  h1
+    font-size: 1.25em
+    padding: 15px 15px 0
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+    color: #fff
+    background: none
+    transition: all 0.2s
+
+#sidebar
+  h3
+    color: #205b75
+  a.selected
+    background-color: #398BB3
+
+img.gravatar
+  position: relative
+  border: 0
+
+div.issue
+  padding: 10px
+  background-color: rgba($blue,0.1)
+  border-color: rgba($blue,0.2)
+  img.gravatar
+    margin-right: 15px
+    padding: 0
+    border: 0
+    border-radius: 1px
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.9), 0 1px 1px 3px rgba(0,0,0,0.2)
+
+.author
+  font-style: italic
+  color: grey
+p.author
+  margin-top: 5px
+
+.box
+  padding: 10px
+  background-color: rgba($blue,0.1)
+  border-color: rgba($blue,0.2)
+  color: #353E42
+
+#context-menu
+  position: fixed !important
+  .submenu:before
+    content: ''
+    position: absolute
+    background: transparent
+    top: -10%
+    left: 0
+    width: 110%
+    height: 120%
+  li.folder > ul
+    left: 145px !important
+
+
+.controller-wiki
+  #content
+    overflow: hidden
+.controller-wiki,
+.controller-boards,
+.controller-messages
+  #main #content
+    max-width: 1024px
+    margin: 0
+
+#main-menu
+  left: 0
+  top: 12em
+  bottom: 5em
+  margin: 0
+  overflow: hidden
+  overflow-y: auto
+  padding: 0
+  li
+    display: block
+    width: 100%
+    a
+      font-size: 1.14em
+      font-weight: 600
+      padding: 0.75em 0.75em 0.75em 60px
+      transition: all 0.1s
+      &:not(.selected):hover
+        // padding-left: 70px
+        background: rgba(255,255,255,0.2)
+      &:not(.selected):active
+        background: rgba(255,255,255,0.3)
+      &.selected,
+      &.selected:hover
+        background: #fff
+        color: $blue
+        text-shadow: none
+  & > ul > li > a
+    position: relative
+    &:before
+      content: ''
+      position: absolute
+      left: 0.875em
+      top: 0.5em
+      width: 30px
+      height: 30px
+      background-size: 100% 100%
+    &.selected:before
+      background-position: center right
+  @each $icon in $icons
+    .#{$icon}:before
+      background: url('../images/icons/#{$icon}.png') center left no-repeat
+
+
+#project_quick_jump_box
+  width: 100%
+  height: 2em
+  margin-top: 10px
+  border: 1px solid #398BB3
+  border-radius: 3px
+  color: #398BB3
+  font-size: 1em
+
+#quick-search
+  width: 100%
+  padding: 0 15px
+  position: absolute
+  top: 60px
+  #q
+    display: block
+    width: 100%
+    padding: 0.4em 0.8em
+    -moz-appearance: none
+    -webkit-appearance: none
+    border: 1px solid #398BB3
+    border-radius: 3px
+    transition: all 0.2s
+
+#top-menu
+  position: absolute
+  z-index: 1
+  top: 0
+  left: 0
+  right: 0
+  height: 2.8em
+  padding: 0.75em 10px 0 20px
+  text-transform: uppercase
+  background: $dark-blue
+
+.wiki-page
+  font-size: 1em
+  line-height: 1.4em
+  margin: 0 auto
+  ul.toc.right
+    clear: right
+  &.wiki pre
+    margin: 1em 0
+    padding: 1em
+    background: $code-background
+    box-shadow: 50em 0 0 $code-background, -50em 0 0 $code-background
+    border: 0
+  a
+    color: #1a719c
+    text-decoration: underline
+  .contextual a
+    opacity: 0.6
+  h1, h2, h3, h4, h5
+    line-height: 1.2
+    font-weight: 600
+    margin: 1.2em 0 0.4em
+  h1
+    font-size: 2em
+    font-weight: 700
+  h2
+    font-size: 1.7em
+  h3
+    font-size: 1.5em
+  h4
+    font-size: 1.2em
+  h5
+    font-size: 1em
+
+.button-small, input[type="submit"]
+  -webkit-appearance: none
+  cursor: pointer
+  border: none
+  background-color: $blue
+  font-size: 1em
+  color: #fff
+  padding: 0.4em 0.8em
+  border-radius: 1em
+  transition: all 0.1s
+  &:hover
+    background-color: rgba($blue,0.8)
+    -webkit-transform: translateY(-2px)
+    transform: translateY(-2px)
+#login-form table
+  padding: 3em 2em
+  background: rgba($blue,0.1)
+  border: 0
+  border-left: 3px solid $blue
+
+.actions
+  .link-button
+    border-radius: 3px
+    box-shadow: inset 0 -2px 0 rgba(0,0,0,0.1)
+    display: inline-block
+    font-size: 0.875em
+    margin: 0 3px 0 0
+    padding: 0.4em 1em
+    text-shadow: 0 1px 1px rgba(0,0,0,0.1)
+    text-transform: uppercase
+    transition: all 0.15s
+    &:hover
+      -webkit-transform: translateY(-2px)
+      transform: translateY(-2px)
+    &[href*='status_id%5D=2']
+      background: #4CA5D1
+    &[href*='status_id%5D=3']
+      background: #85BC2E
+    &[href*='status_id%5D=4']
+      background: $dark-blue
+    &[href*='status_id%5D=5']
+      background: #E96112
+    &[href*='status_id%5D=6']
+      background: #D0021B
+    &[href*='status_id%5D=14']
+      background: #EAA22B
+
+
+
+/* FORUM */
+table td
+  padding: 0.25em
+.list .context-menu-selection,
+.list .context-menu-selection:hover
+  background-color: $blue !important
+
+table.list
+  border: 0
+  th
+    background: none
+    font-weight: 600
+  th,
+  td
+    padding: 0.5em 0.675em
+    vertical-align: top
+    text-align: left
+  td.checkbox
+    padding: 0.35em 0.4em
+  tr
+    border-bottom: 1px solid rgba(0,0,0,0.05)
+    transition: all 0.05s ease-in-out
+  tbody tr:hover
+    background: rgba($blue,0.2)
+  tbody tr.group td
+    border: 0
+    box-shadow: inset 0 2em #fff
+    padding-top: 2.5em
+  .issue
+    border: 0
+    border-bottom: 1px solid rgba(0,0,0,0.06)
+    background: none
+    &.priority-lowest .subject a
+      font-style: italic
+    &.priority-default .subject a
+      //...
+    &.priority-high4  .subject a
+      color: #F5A623
+    &.priority-high3 .subject a
+      color: #F48223
+      font-weight: 600
+    &.priority-high2  .subject a
+      color: #F55E23
+      font-weight: 600
+    &.priority-highest .subject a
+      color: #C91B1D
+      font-weight: 600
+
+.message.reply
+  padding-left: 2em
+tr.message td.subject
+  font-size: 1.2em
+  padding-left: 0.8em
+.odd
+  background: none
+
+
+
+/* Issue list by group */
+.count
+  float: left
+  line-height: 1.8
+  margin-right: 0.5em
+
+.expander
+  background-color: #fff
+  background-position: 1px 2px
+  float: right
+  margin-right: 1em
+  padding-left: 1em
+
+@media screen and (max-width: 1024px)
+  /* Small menu */
+  .splitcontentleft,
+  .splitcontentright
+    float: none
+    width: auto
+
+  body:not(.showMenu)
+    #header
+      width: 4.4em
+      background-size: 300%
+      background-position: bottom 10px left 10px
+      & > h1
+        position: fixed
+        z-index: 10
+        padding: 0
+        left: 2.75em
+        top: 1.5em
+        font-size: 1.6em
+        color: $blue
+        background: #fff
+        width: 100%
+        padding: 0.25em 0 0.25em 1.9em
+        box-shadow: 0 1px 1px rgba(0,0,0,0.1)
+        .root
+          color: $blue
+    #q
+      background: url('../images/icons/search.png') center center no-repeat
+    label[for="q"]
+      display: none
+    #project_quick_jump_box
+      cursor: pointer
+      -webkit-appearance: none
+      background: transparent url('../images/icons/projects.png') center center no-repeat
+      color: transparent
+      border: 0
+    #project_quick_jump_box:hover
+      background: rgba(255,255,255,0.1) url('../images/icons/projects.png') center center no-repeat
+    #main-menu a
+      color: transparent !important
+    #main
+      left: 4.4em
+      top: 5em
+
+
+@media screen and (min-width: 1250px)
+  body
+    font-size: 13px
+@media screen and (min-width: 1400px)
+  body
+    font-size: 14px
