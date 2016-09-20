@@ -48,8 +48,9 @@ fieldset.collapsible
   transition: all 0.1s ease-in-out
   margin-bottom: 2em
   legend
-    font-weight: 600
     color: $dark-blue
+legend
+  font-weight: 600
 
 fieldset.collapsed
   padding: 0
@@ -390,6 +391,14 @@ tr.message td.subject
   float: right
   margin-right: 1em
   padding-left: 1em
+
+
+@media screen and (max-width: 1380px)
+  #user_form
+    .splitcontentleft,
+    .splitcontentright
+      float: none
+      width: auto
 
 @media screen and (max-width: 1024px)
   /* Small menu */
