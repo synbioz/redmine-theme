@@ -331,6 +331,13 @@ p.author {
   .actions .link-button[href*='status_id%5D=14'] {
     background: #EAA22B; }
 
+fieldset#filters tr.filter {
+  height: auto; }
+  fieldset#filters tr.filter td {
+    padding: 0.25em; }
+fieldset#filters td.values input {
+  height: auto; }
+
 /* FORUM */
 table td {
   padding: 0.25em; }
