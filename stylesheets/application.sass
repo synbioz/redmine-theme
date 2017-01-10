@@ -271,6 +271,45 @@ p.author
     font-size: 1.2em
   h5
     font-size: 1em
+  .toc
+    li > a + ul
+      margin-top: 0.25em
+
+    li li
+      color: #205B75
+      line-height: 1.618
+
+    li li a
+      color: #205B75
+
+    ul
+      margin-bottom: 0.5em
+
+    ul,
+    li
+      font-size: 1em
+      font-style: normal
+      line-height: 1.1
+
+  div.wiki ul.toc
+    background: #fff
+    border: 0
+    bottom: 0
+    display: block
+    font-size: 1.125em
+    margin: 0
+    overflow: auto
+    padding: 1em
+    position: fixed
+    right: 0
+    top: 2.2em
+    width: 500px
+    z-index: 10
+
+  div.wiki ul.toc > li > a
+    display: block
+    margin-bottom: 2em
+
 
 .button-small, input[type="submit"]
   -webkit-appearance: none
@@ -398,6 +437,58 @@ tr.message td.subject
   float: right
   margin-right: 1em
   padding-left: 1em
+
+
+
+#history
+  .journal,
+  [id^="note"]
+    clear: both
+
+  .journal
+    position: relative
+    margin-bottom: 1em
+    border-bottom: 1px dashed #bbb
+    overflow: hidden
+  h4
+    float: left
+    width: 12rem
+    font-size: 0
+    border: 0
+    margin: 0 1rem 0 0
+    padding: 0
+    overflow: hidden
+    & a
+      display: block
+      font-size: 0.875rem
+      font-weight: 500
+      &:last-child
+        color: grey
+        font-weight: normal
+  .gravatar
+    border-radius: 50%
+    padding: 0
+    margin: 0 10px 20px 0
+    float: left
+  .user
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+  .details
+    margin: 0
+    font-size: 0.875em
+    list-style: none
+    color: #7d8589
+  .wiki
+    overflow: hidden
+  .contextual
+    position: absolute
+    top: 0
+    right: 0
+  .journal-link
+    position: absolute
+    right: 0
+    bottom: 0
 
 
 @media screen and (max-width: 1380px)

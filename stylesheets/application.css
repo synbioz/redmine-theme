@@ -283,6 +283,37 @@ p.author {
     font-size: 1.2em; }
   .wiki-page h5 {
     font-size: 1em; }
+  .wiki-page .toc li > a + ul {
+    margin-top: 0.25em; }
+  .wiki-page .toc li li {
+    color: #205B75;
+    line-height: 1.618; }
+  .wiki-page .toc li li a {
+    color: #205B75; }
+  .wiki-page .toc ul {
+    margin-bottom: 0.5em; }
+  .wiki-page .toc ul,
+  .wiki-page .toc li {
+    font-size: 1em;
+    font-style: normal;
+    line-height: 1.1; }
+  .wiki-page div.wiki ul.toc {
+    background: #fff;
+    border: 0;
+    bottom: 0;
+    display: block;
+    font-size: 1.125em;
+    margin: 0;
+    overflow: auto;
+    padding: 1em;
+    position: fixed;
+    right: 0;
+    top: 2.2em;
+    width: 500px;
+    z-index: 10; }
+  .wiki-page div.wiki ul.toc > li > a {
+    display: block;
+    margin-bottom: 2em; }
 
 .button-small, input[type="submit"] {
   -webkit-appearance: none;
@@ -407,6 +438,54 @@ tr.message td.subject {
   float: right;
   margin-right: 1em;
   padding-left: 1em; }
+
+#history .journal,
+#history [id^="note"] {
+  clear: both; }
+#history .journal {
+  position: relative;
+  margin-bottom: 1em;
+  border-bottom: 1px dashed #bbb;
+  overflow: hidden; }
+#history h4 {
+  float: left;
+  width: 12rem;
+  font-size: 0;
+  border: 0;
+  margin: 0 1rem 0 0;
+  padding: 0;
+  overflow: hidden; }
+  #history h4 a {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500; }
+    #history h4 a:last-child {
+      color: grey;
+      font-weight: normal; }
+#history .gravatar {
+  border-radius: 50%;
+  padding: 0;
+  margin: 0 10px 20px 0;
+  float: left; }
+#history .user {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+#history .details {
+  margin: 0;
+  font-size: 0.875em;
+  list-style: none;
+  color: #7d8589; }
+#history .wiki {
+  overflow: hidden; }
+#history .contextual {
+  position: absolute;
+  top: 0;
+  right: 0; }
+#history .journal-link {
+  position: absolute;
+  right: 0;
+  bottom: 0; }
 
 @media screen and (max-width: 1380px) {
   #user_form .splitcontentleft,
