@@ -1,13 +1,3 @@
-@import url(../../../stylesheets/application.css)
-
-$black: #333
-$blue: #4ca5d1
-$dark-blue: #205B75
-$code-background: #d6f1ff
-$grey: #7f9098
-$main-bg: #eaf8ff
-$sidebar-width: 18rem
-$icons: ('overview', 'activity', 'roadmap', 'issues', 'new-issue', 'gantt', 'calendar', 'news', 'documents', 'wiki', 'boards', 'files', 'settings', 'repository')
 
 *, *:before, *:after
   box-sizing: border-box
@@ -70,8 +60,6 @@ html > body #content
 
 html > body  #content
   box-shadow: 1px 0 1px rgba(0,0,0,0.05)
-html > body  #header
-  box-shadow: inset -1px 0 1px rgba(0,0,0,0.05)
 
 #main
   left: $sidebar-width
@@ -85,16 +73,18 @@ html > body  #header
   padding: 0
   position: absolute
   top: 2.125em
-  transition: all 0.2s
 
 #header
   left: 0
   bottom: 0
+  z-index: 1
   width: $sidebar-width
   padding: 10px 0 0
-  background: $blue
-  background: $blue url('../images/logo-synbioz.png') no-repeat bottom 20px center
-  background-size: 70%
+  background: $dark-blue
+  background: $dark-blue url('../images/logo-synbioz.png') no-repeat bottom 20px center
+  background-size: 50% auto
+  box-shadow: inset 5px 0 15px rgba(0,0,0,0.1),  inset 1px 0 5px rgba(0,0,0,0.1)
+  transition: transform 0.2s ease-in-out
   h1
     font-size: 1.25em
     padding: 15px 15px 0
@@ -103,7 +93,6 @@ html > body  #header
     text-overflow: ellipsis
     color: #fff
     background: none
-    transition: all 0.2s
 
 #sidebar
   h3
@@ -189,7 +178,7 @@ p.author
 
 #main-menu
   left: 0
-  top: 12em
+  top: 13em
   bottom: 5em
   margin: 0
   overflow: hidden
@@ -200,19 +189,22 @@ p.author
     width: 100%
     a
       font-size: 1.14em
-      font-weight: 600
+      font-weight: 500
       padding: 0.75em 0.75em 0.75em 60px
+      opacity: 0.7
       transition: all 0.1s
-      &:not(.selected):hover
-        // padding-left: 70px
-        background: rgba(255,255,255,0.2)
       &:not(.selected):active
         background: rgba(255,255,255,0.3)
       &.selected,
+      &:hover,
       &.selected:hover
-        background: #fff
-        color: $blue
-        text-shadow: none
+        background: none
+        color: #fff
+        opacity: 1
+        padding-left: 4.2em
+        &:before
+          opacity: 1
+          transform: scale(1.3)
   & > ul > li > a
     position: relative
     &:before
@@ -222,37 +214,40 @@ p.author
       top: 0.5em
       width: 30px
       height: 30px
+      opacity: 0.8
+      background-position: left
       background-size: 100% 100%
-    &.selected:before
-      background-position: center right
+      transition: all 0.1s
   @each $icon in $icons
     .#{$icon}:before
       background: url('../images/icons/#{$icon}.png') center left no-repeat
 
-
-#project_quick_jump_box
+#q, #project_quick_jump_box
+  display: block
   width: 100%
-  height: 2em
-  margin-top: 10px
-  border: 1px solid #398BB3
-  border-radius: 3px
-  color: #398BB3
+  appearance: none
+  -webkit-appearance: none
+  background-color: rgba(0,0,0,0.2)
+  border: 1px solid rgba(255,255,255,0.7)
+  border-radius: 2px
+  color: #fff
   font-size: 1em
+  height: 2.5em
+  margin-top: 0.5em
+  padding: 0.5em
+  transition: all 0.2s
+
+#q
+  background: rgba(0,0,0,0.2) url('../images/icons/search.png') right center no-repeat
+#project_quick_jump_box
+  background: rgba(0,0,0,0.2) url('../images/icons/projects.png') right center no-repeat
 
 #quick-search
   width: 100%
   padding: 0 15px
   position: absolute
   top: 60px
-  #q
-    display: block
-    width: 100%
-    padding: 0.4em 0.8em
-    -moz-appearance: none
-    -webkit-appearance: none
-    border: 1px solid #398BB3
-    border-radius: 3px
-    transition: all 0.2s
+
 
 #top-menu
   position: absolute
@@ -263,7 +258,7 @@ p.author
   height: 2.8em
   padding: 0.75em 10px 0 20px
   text-transform: uppercase
-  background: $dark-blue
+  background: $blue
 
 .wiki-page
   font-size: 1em
@@ -552,60 +547,3 @@ tr.message td.subject
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADUAAABdBAMAAAD3bzN0AAAAGFBMVEX////+/v79/f3///3+/vy5uL9xcXsoKC0vkuYqAAAEcElEQVR4AW3SwXOjOhIGcEmxnStiZnav0CB89cPed3YI2bOfkpavE2rVXKdcZfHvbwscGyf5qqYG8qtP3UQR8yTjv2+jUhAq/xbrBgxiUsB3NXCOvIfsGwNE4vj2a0sYphCI3tIvmKEjBNOT/9r7hc5CXUAg+8VM1akNT13TO3yyBdd2/H8Dwat7kmCoeY4PaaD7nk4NdjBacyR110phybblx5QHZnP6AcdhCHXOz381a4L5gdAPnDMkbGlFdm7cismmF1okV1Or4ZwjDQGiCXLlzeDYFQ12AHk0RaQALqSX5xLAddP7tubBWaoutlKNMPhhLwNHfRiAMei6UsTsovH8yVKIsShh7BnybhjsiFL+BzJ2M71u4ukmfuvUE5Cz4SF+31OF/wNlhtHSJaR/D8MpQ5tprUvuZcCfJaNxaeBY46TWyhgefQBzGs3COrCdwOUyhTLu5QBIsWU2XcdeMJhLBXoLcTasU16zRJiMe/UygxItANpCsQE2o52NK/eQq2M/nBvDnvA8Y8toJ7bGpiZeZTxURqsQqngk+sXewscZOZPUgGg56LtygZPxzpCxJWqFY1z+kGJ96WG0GBeJDnnCs+EyG/IkUi4qIjqAFunK2li06ECPVheZGALUiUgB0VRkX9DncrTttm1CWDwLsahd3Mug4wFizMMu788//hIxHmO80hMlD7umpwfJS4vsFznnCNqpFrMP590PwSPk30NAm8KTkBeV3CvL8dUMocnzLLmagEBgIF7nr+FclgDFBaaeGf7k/Piv4VQWEGBmISzDKdpq8ElaUXczCGToTzn1iuY4HMQ10NNL+D1Z97OhPr+ATsTU+8nbVaEr0/4sec/JZN1THbpoq3CCik7F1cQmUE2jLUMHq/7P82Qctecz+3G35dA1Fb0/TRCNe0BdEi10resPN5PRQpdNvdr1cDWpmz724uKG5xHBk04ulgLFnp7OzKi/GqcJpKgr+b0efkuiYiOu2fcOqGvZuA6xd7PGeQjvU4/tqGa9+uj/oW7HtonzSO1nd3T0lnDs9R04gpuJpmLzbTTy9ybbtbfOF1qLhvyDm+8pm7V/dVTmWgD5oiK7ue+t/UHGXgdrep3vUp0tj8y1BN/Bo5uZ2LGZgFKrF8dGb1eTCV8pZgEhA4MdVNQ96+RqKcPRv0GB7rVd39lCsa0JLSIt2n/fjPOwHzBVAyLyuB332gtEA0KAdfDU/1PuHsPcpDr6ww6Ow/CeavlI3XZua//WNqBEnieSe3PLHv1ru1EKZC7k+q4nFH98kS3a+LNPPRE/frGRenyu7nqcgPBhj/T7zh4ClpkQl57dz00d8XC5NKjoMPtds/H1QTxTaoVUbnQys8pjPhk4Ku4NAqr8Yl5Fu6Xp8bXcCK13/8UuiQvf/Tnhz1Jsdw06K+5NmYD2eds2Bh3AnYkUBo8KMoPYwZ2w5Y8Bxzj72SQXaaQu24vPCKuBnCMP5WeTepMv+xAsQJaIL9k2GagMYPOVNkK1rS624pvE69PbW+n/cnljqYkzTmEAAAAASUVORK5CYII=')
   width: 53px
   height: 93px
-
-
-@media screen and (max-width: 1380px)
-  #user_form
-    .splitcontentleft,
-    .splitcontentright
-      float: none
-      width: auto
-
-@media screen and (max-width: 1260px)
-  /* Small menu */
-  .splitcontentleft,
-  .splitcontentright
-    float: none
-    width: auto
-
-  body:not(.showMenu)
-    #header
-      width: 4.4em
-      background-size: 300%
-      background-position: bottom 10px left 10px
-      & > h1
-        position: fixed
-        z-index: 10
-        padding: 0
-        left: 2.75em
-        top: 1.5em
-        font-size: 1.6em
-        color: $blue
-        background: #fff
-        width: 100%
-        padding: 0.25em 0 0.25em 1.9em
-        box-shadow: 0 1px 1px rgba(0,0,0,0.1)
-        .root
-          color: $blue
-    #q
-      background: url('../images/icons/search.png') center center no-repeat
-    label[for="q"]
-      display: none
-    #project_quick_jump_box
-      cursor: pointer
-      -webkit-appearance: none
-      background: transparent url('../images/icons/projects.png') center center no-repeat
-      color: transparent
-      border: 0
-    #project_quick_jump_box:hover
-      background: rgba(255,255,255,0.1) url('../images/icons/projects.png') center center no-repeat
-    #main-menu a
-      color: transparent !important
-    #main
-      left: 4.4em
-      top: 5em
-
-
-@media screen and (min-width: 1400px)
-  body
-    font-size: 14px
