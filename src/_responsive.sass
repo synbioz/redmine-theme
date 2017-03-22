@@ -1,0 +1,49 @@
+@media screen and (max-width: 1380px)
+  #user_form
+    .splitcontentleft,
+    .splitcontentright
+      float: none
+      width: auto
+
+@media screen and (max-width: 1260px)
+  /* Small menu */
+  .splitcontentleft,
+  .splitcontentright
+    float: none
+    width: auto
+
+  body:not(.showMenu)
+    #header
+      width: 4.4em
+      background-size: 300%
+      background-position: bottom 10px left 10px
+      & > h1
+        position: fixed
+        z-index: 10
+        padding: 0
+        left: 2.75em
+        top: 1.5em
+        font-size: 1.6em
+        color: $blue
+        background: #fff
+        width: 100%
+        padding: 0.25em 0 0.25em 1.9em
+        box-shadow: 0 1px 1px rgba(0,0,0,0.1)
+        .root
+          color: $blue
+    label[for="q"]
+      display: none
+    #project_quick_jump_box
+      cursor: pointer
+      color: transparent
+      border: 0
+    #main-menu a
+      color: transparent !important
+    #main
+      left: 4.4em
+      top: 5em
+
+
+@media screen and (min-width: 1400px)
+  body
+    font-size: 14px
