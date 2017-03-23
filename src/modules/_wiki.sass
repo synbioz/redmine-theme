@@ -1,0 +1,71 @@
+.wiki-page
+  font-size: 1em
+  line-height: 1.4em
+  margin: 0 auto
+  ul.toc.right
+    clear: right
+  &.wiki pre
+    margin: 1em 0
+    padding: 1em
+    background: $code-background
+    box-shadow: 50em 0 0 $code-background, -50em 0 0 $code-background
+    font-family: "Fira Code","Fira mono","Source code pro", monospace
+    border: 0
+  a
+    color: #1a719c
+    text-decoration: underline
+  .contextual a
+    opacity: 0.6
+  h1, h2, h3, h4, h5
+    line-height: 1.2
+    font-weight: 600
+    margin: 1.2em 0 0.4em
+  h1
+    font-size: 2em
+    font-weight: 700
+  h2
+    font-size: 1.7em
+  h3
+    font-size: 1.5em
+  h4
+    font-size: 1.2em
+  h5
+    font-size: 1em
+  .toc
+    li > a + ul
+      margin-top: 0.25em
+
+    li li
+      color: #205B75
+      line-height: 1.618
+
+    li li a
+      color: #205B75
+
+    ul
+      margin-bottom: 0.5em
+
+    ul,
+    li
+      font-size: 1em
+      font-style: normal
+      line-height: 1.1
+
+  div.wiki ul.toc
+    background: #fff
+    border: 0
+    bottom: 0
+    display: block
+    font-size: 1.125em
+    margin: 0
+    overflow: auto
+    padding: 1em
+    position: fixed
+    right: 0
+    top: 2.2em
+    width: 500px
+    z-index: 10
+
+  div.wiki ul.toc > li > a
+    display: block
+    margin-bottom: 2em
