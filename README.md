@@ -1,6 +1,20 @@
-Use Sass to generate stylesheet :
+## Install dependencies :
 
-~~~sh
-cd {app_directory}/public/themes/synbioz/
-sass --watch stylesheets/application.sass:stylesheets/application.css
+~~~bash
+npm install -g babel-cli
+gem install watch
+~~~
+
+## **Watch** and **build** the sources :
+
+~~~bash
+npm start
+~~~
+
+## Only Build the sources :
+
+~~~bash
+npm build_css
+npm build_js
+npm build
 ~~~
