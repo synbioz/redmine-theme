@@ -11,6 +11,16 @@
     -webkit-opacity: 1
     opacity: 1
 
+@keyframes contentFadeIn
+  0%
+    opacity: 0
+    transform: translateY(-10px)
+  100%
+    opacity: 1
+    transform: translateY(0)
+
+
+
 *, *:before, *:after
   box-sizing: border-box
 
@@ -20,12 +30,13 @@ html
 body
   color: $black
   -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
 
 code span, pre span
   font-family: 'Consolas', monospace
 
 body, p, h1 ,h2 ,h3 ,h4 ,h5 , li
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+  font-family: "SF UI Text", BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif
 
 h1, h2, h3, h4, h5
   color: $dark-blue
@@ -39,18 +50,79 @@ a:hover, a:active
   color: $blue
   text-decoration: underline
 
-html > body #content
-  min-height: calc(100vh - 2.8em)
+#content
+  min-height: calc(100vh - 2.8em) !important
   max-width: 1220px
   padding: 2em 3em
   border: 0
   box-shadow: none
+  animation: contentFadeIn 0.5s ease-in-out
+  transform-origin: left top
+  animation-duration: 0.3s
+  h2
+    padding: 0
+  & > .contextual:first-child
+    margin: 0
+    transform: translateY(-5px)
+    // Fixed contextual menu on the bottom of page
+    //
+    // position: fixed
+    // padding: 0
+    // bottom: 0
+    // left: 50%
+    // transform: translateX(-50%)
+    // box-shadow: 0 0 3px rgba(0,0,0,0.1),0 0 15px rgba(0,0,0,0.1), inset 0 1px 3px rgba(0,0,0,0.1)
+    // border: 2px solid #fff
+    // border-radius: 3px 3px 0 0
+    a
+      float: left
+      display: inline-block
+      vertical-align: top
+      background-position: left 4px center
+      font-weight: 300
+      margin: 0
+      padding: .35em .75em
+      padding-left: 24px
+      line-height: 1.4
+      border: 1px solid rgba(42, 48, 56, 0.2)
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 1)
+      transition: all .1s ease-in-out
+      &:not(.icon-add)
+        color: #111
+        background-color: #fafafa
+      &:hover
+        background-color: #fff
+        border-bottom-color: rgba(42, 48, 56, 0.4)
+      & + a
+        border-left: 0
+      &:first-child
+        border-radius: 3px 0 0 3px
+      &:last-child
+        border-radius: 0 3px 3px 0
+      &:first-child:last-child
+        border-radius: 3px
+      &.icon-add
+        background-color: $green
 
-#content h2
+
+a.icon-add
+  display: inline-block
+  vertical-align: top
+  background-color: $green
+  color: #fff
+  font-weight: 600
+  border: 1px solid rgba(42, 48, 56, 0.3)
+  border-radius: 3px
+  margin: 0 .5em
+  padding: .35em .75em
+  line-height: 1.4
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.5), inset 0 -1px 1px rgba(0, 0, 0, 0.1), 0 1px 1px #fff
+  transition: all .1s ease-in-out
+
+.icon-add:before
+  margin-right: 0.25em
   padding: 0
 
-html > body  #content
-  box-shadow: 1px 0 1px rgba(0,0,0,0.05)
 
 #main
   left: $sidebar-width
