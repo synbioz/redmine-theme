@@ -69,51 +69,40 @@ div.wiki ul.toc
   color: #fff
   border-radius: 5px
   opacity: 0.9
+  overflow: auto
   transform: translateY(calc(100% - 6em))
   transition: all 0.3s cubic-bezier(0.6, 0, 0.99, 1.21)
   &:before
-    content: '?'
-    position: absolute
-    top: 1em
-    right: 1em
+    content: 'Table des matières'
+    display: block
     font-weight: 500
-    font-size: 1.5em
-    width: 2em
-    height: 2em
-    border-radius: 50%
+    font-size: 1.25em
+    text-transform: uppercase
+    padding: 0 1em 1em
     line-height: 1.85em
     text-align: center
     background: #fff
     color: #4ca5d1
-    border: 2px solid #4ca5d1
+    border-bottom: 1px solid $lightgrey
     transition: all 0.35s cubic-bezier(0.6, 0, 0.3, 1.3)
   &:hover
     transform: none
     opacity: 1
-    &:before
-      transform: scale(0)
-      opacity: 0
   a
     color: #4ca5d1
-
+    font-weight: 600
   & > li
     *
       font-size: 1rem
+    li > a
+      color: #333
+      font-weight: normal
     >
       a
         display: block
-        font-size: 2.4em
-        margin-bottom: 1em
+        font-size: 1.4em
+        margin-top: 1em
         color: #4ca5d1
-      ul
-        padding-bottom: 2em
-        overflow: auto
-        display: block
-        height: 68vh
-        border-bottom: 1px solid #ddd
-    li > a
-      color: #333
-
     li
       position: relative
       margin-left: 1em
