@@ -56,24 +56,14 @@ a:hover, a:active
   padding: 2em 3em
   border: 0
   box-shadow: none
-  animation: contentFadeIn 0.5s ease-in-out
+  // animation: contentFadeIn 0.5s ease-in-out
   transform-origin: left top
-  animation-duration: 0.3s
+  // animation-duration: 0.3s
   h2
     padding: 0
   & > .contextual:first-child
     margin: 0
     transform: translateY(-5px)
-    // Fixed contextual menu on the bottom of page
-    //
-    // position: fixed
-    // padding: 0
-    // bottom: 0
-    // left: 50%
-    // transform: translateX(-50%)
-    // box-shadow: 0 0 3px rgba(0,0,0,0.1),0 0 15px rgba(0,0,0,0.1), inset 0 1px 3px rgba(0,0,0,0.1)
-    // border: 2px solid #fff
-    // border-radius: 3px 3px 0 0
     a
       float: left
       display: inline-block
@@ -102,7 +92,23 @@ a:hover, a:active
       &:first-child:last-child
         border-radius: 3px
       &.icon-add
-        background-color: $green
+        background: $green
+        padding: .35em .75em
+        font-weight: 600
+        text-transform: uppercase
+        &:before
+          content: "+"
+          display: inline-block
+          vertical-align: baseline
+          width: 1em
+          height: 1em
+          line-height: 0.8em
+          font-size: 1.75em
+          text-align: center
+          color: #fff
+          background: #86c558
+          font-weight: 400
+          border-radius: 50%
 
 
 a.icon-add
@@ -325,9 +331,6 @@ div.flash.error, #errorExplanation ul
   text-transform: uppercase
   background: $blue
 
-
-
-
 .button-small, input[type="submit"]
   -webkit-appearance: none
   cursor: pointer
@@ -342,11 +345,26 @@ div.flash.error, #errorExplanation ul
     background-color: rgba($blue,0.8)
     -webkit-transform: translateY(-2px)
     transform: translateY(-2px)
+
+
 #login-form table
-  padding: 3em 2em
-  background: rgba($blue,0.1)
+  padding: 4em 3em 2em
   border: 0
-  border-left: 3px solid $blue
+  border-radius: 3px
+  background-color: #fff
+  box-shadow: 0 10px 50px rgba($dark-blue,0.2)
+  tr
+    display: flex
+    flex-flow: column
+  td ,
+  label
+    display: flex
+    padding: 0
+  input
+    font-size: 1.25em
+    margin-bottom: 1em
+  tr:last-child td:last-child
+    justify-content: flex-end
 
 .actions
   .link-button
