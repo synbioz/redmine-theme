@@ -8,6 +8,7 @@ $dark: rgb(42,48,56)
   font-family: -apple-system, BlinkMacSystemFont, sans-serif
   -webkit-font-smoothing: antialiased
 
+// Input and closed state
 .Redspot
   position: fixed
   display: none
@@ -19,7 +20,7 @@ $dark: rgb(42,48,56)
   overflow: hidden
   font-size: 16px
   transform: translateX(-50%)
-  background-color: rgba($dark,0.8)
+  background-color: rgba($dark,0.9)
   box-shadow: 0 30px 50px 0 rgba(0,0,0,0.3)
   transition: all 0.2s ease-in-out
   &.display
@@ -27,8 +28,8 @@ $dark: rgb(42,48,56)
   &__icon
     color: #fff
     position: absolute
-    top: 1.55em
-    left: 1.45em
+    top: 1.25em
+    left: 1.25em
   &__submit
     display: none
   &__input
@@ -40,11 +41,12 @@ $dark: rgb(42,48,56)
     font-size: 30px
     font-weight: 300
     color: #fff
-    background-color: rgba($dark,0.2)
+    background-color: rgba($dark,0.75)
     outline: none
+    &::-webkit-input-placeholder
+      color: rgba(#fff,0.5)
 
-
-
+// List of opened state
 .Redspot
   &__results
     display: flex
@@ -54,27 +56,25 @@ $dark: rgb(42,48,56)
     width: 50%
     max-height: 17em
     overflow: auto
-    a
-      display: block
-      height: 2em
-      line-height: 2em
-      padding: 0 1em
-      font-size: 24px
-      font-weight: 300
-      text-decoration: none
-      white-space: nowrap
-      color: #fff
-      overflow: hidden
-      opacity: 0.5
-      transition: all 0.1s ease-in-out
-    li a:hover,
-    li a:focus
+  &__project
+    display: block
+    height: 2em
+    line-height: 2em
+    padding: 0 1em
+    font-size: 24px
+    font-weight: 300
+    text-decoration: none
+    white-space: nowrap
+    color: #fff
+    overflow: hidden
+    opacity: 0.5
+    // Prevent hover flickering on retina display
+    transform: translate3d(0px,0px,0px)
+    transition: all 0.1s ease-in-out
+    &:hover,
+    &--focused
       opacity: 1
       background-color: #4ca5d1
-      color: #fff
-      outline: none
-    li:first-child a
-      opacity: 1
       color: #fff
       outline: none
 
