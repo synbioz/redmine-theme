@@ -16,7 +16,7 @@
       shouldSort: true,
       tokenize: true,
       matchAllTokens: true,
-      threshold: 0.7,
+      threshold: 0.1,
       location: 0,
       distance: 1000,
       maxPatternLength: 32,
@@ -26,22 +26,24 @@
       ]
     },
     bangs = {
-      "!?":    "/projects/redmine-synbioz/wiki/Redspot",
-      "!a":    "/activity",
-      "!r":    "/roadmap",
-      "!i":    "/issues", "!#": "/issues",
-      "!n":    "/issues/new", "!+": "/issues/new",
-      "!g":    "/issues/gantt",
-      "!c":    "/issues/calendar",
-      "!news": "/news",
-      "!d":    "/documents",
-      "!w":    "/wiki", "!wiki": "/wiki", "!doc": "/wiki",
-      "!f":    "/files", "!files": "/files",
-      "!s":    "/settings", "!settings": "/settings",
+      "/?":    "/projects/redmine-synbioz/wiki/Redspot",
+      "/a":    "/activity",
+      "/r":    "/roadmap",
+      "/i":    "/issues",
+      "/#":    "/issues",
+      "/+":    "/issues/new",
+      "/new":  "/issues/new",
+      "/g":    "/issues/gantt",
+      "/c":    "/issues/calendar",
+      "/n":    "/news",
+      "/d":    "/documents",
+      "/w":    "/wiki",
+      "/wiki": "/wiki",
+      "/f":    "/files",
+      "/s":    "/settings"
     },
     template = `
       <div class="Redspot">
-        <style class="Redspot__css"></style>
         <i class="Redspot__icon"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25"><g fill="none" fill-rule="evenodd"><path d="M-4-4h34v34H-4z"/><path fill="#FFF" fill-rule="nonzero" d="M17.958 15.833H16.84l-.396-.382a9.168 9.168 0 0 0 2.224-5.993A9.208 9.208 0 0 0 9.458.25 9.208 9.208 0 0 0 .25 9.458a9.208 9.208 0 0 0 9.208 9.209c2.281 0 4.378-.836 5.993-2.225l.382.397v1.12l7.084 7.069 2.11-2.111-7.069-7.084zm-8.5 0a6.366 6.366 0 0 1-6.375-6.375 6.366 6.366 0 0 1 6.375-6.375 6.366 6.366 0 0 1 6.375 6.375 6.366 6.366 0 0 1-6.375 6.375z"/></g></svg></i>
         <input type="text" placeholder="Recherche Redspot" class="Redspot__input">
         <div class="Redspot__results">
@@ -54,8 +56,8 @@
 
   function interpreter(value) {
     return {
-      bang: value.split(' ').filter( word => word[0] === '!' ).pop(),
-      search: value.split(' ').filter( word => word[0] !== "!").join(" ")
+      bang: value.split(' ').filter( word => word[0] === '/' ).pop(),
+      search: value.split(' ').filter( word => word[0] !== '/').join(' ')
     }
   }
 
@@ -65,10 +67,8 @@
       url = filtered[focusIndex].item.url
     }
     if (interpreted.bang !== undefined) {
-      // console.log(filtered, url)
       window.location = "https://support.synbioz.com/" + url.split('?').shift() + bangs[interpreted.bang]
     } else {
-      // console.log(filtered, url)
       window.location = "https://support.synbioz.com/" + url
     }
   }

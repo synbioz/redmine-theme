@@ -1,4 +1,5 @@
 $dark: rgb(42,48,56)
+$blue: #4ca5d1
 
 .Redspot,
 .Redspot *
@@ -28,8 +29,9 @@ $dark: rgb(42,48,56)
   &__icon
     color: #fff
     position: absolute
-    top: 1.25em
-    left: 1.25em
+    font-size: 1em
+    top: 1.45em
+    left: 1.45em
   &__submit
     display: none
   &__input
@@ -46,54 +48,54 @@ $dark: rgb(42,48,56)
     &::-webkit-input-placeholder
       color: rgba(#fff,0.5)
 
-// List of opened state
-.Redspot
-  &__results
-    display: flex
-    flex-flow: row nowrap
-  &__resultList
-    flex: 1 0 50%
-    width: 50%
-    max-height: 17em
-    overflow: auto
-  &__project
-    display: block
-    height: 2em
-    line-height: 2em
-    padding: 0 1em
-    font-size: 24px
-    font-weight: 300
-    text-decoration: none
-    white-space: nowrap
-    color: #fff
-    overflow: hidden
-    opacity: 0.5
-    // Prevent hover flickering on retina display
-    transform: translate3d(0px,0px,0px)
-    transition: all 0.1s ease-in-out
-    &:hover,
-    &--focused
-      opacity: 1
-      background-color: #4ca5d1
+  // List of opened state
+  .Redspot
+    &__results
+      display: flex
+      flex-flow: row nowrap
+    &__resultList
+      flex: 1 0 50%
+      width: 50%
+      max-height: 17em
+      overflow: auto
+    &__project
+      display: block
+      height: 2em
+      line-height: 2em
+      padding: 0 1em
+      font-size: 24px
+      font-weight: 300
+      text-decoration: none
+      white-space: nowrap
       color: #fff
-      outline: none
+      overflow: hidden
+      opacity: 0.5
+      // Prevent hover flickering on retina display
+      transform: translate3d(0px,0px,0px)
+      transition: all 0.1s ease-in-out
+      &:hover,
+      &--focused
+        opacity: 1
+        background-color: $blue
+        color: #fff
+        outline: none
 
 
-  &__resultLinks
-    flex: 1 0 50%
-    display: flex
-    flex-flow: row wrap
-    background-color: rgba(0,0,0,0.1)
-    li
+    &__resultLinks
       flex: 1 0 50%
       display: flex
-      align-items: center
-      justify-content: center
-    a
-      display: block
-      padding: 1em
-      text-align: center
-      color: #fff
-      font-weight: 600
-      text-transform: uppercase
-      text-decoration: none
+      flex-flow: row wrap
+      background-color: rgba(0,0,0,0.1)
+      li
+        flex: 1 0 50%
+        display: flex
+        align-items: center
+        justify-content: center
+      a
+        display: block
+        padding: 1em
+        text-align: center
+        color: #fff
+        font-weight: 600
+        text-transform: uppercase
+        text-decoration: none
