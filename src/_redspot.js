@@ -7,6 +7,7 @@
     resultList,
     resultLinks,
     redspotInput,
+    redspotLabel,
     redspot,
     currentFocusIndex = 0,
     lastSearchLength = 0,
@@ -25,34 +26,83 @@
         "name"
       ]
     },
-    bangs = {
-      "/?":    "/projects/redmine-synbioz/wiki/Redspot",
-      "/a":    "/activity",
-      "/r":    "/roadmap",
-      "/i":    "/issues",
-      "/#":    "/issues",
-      "/+":    "/issues/new",
-      "/new":  "/issues/new",
-      "/g":    "/issues/gantt",
-      "/c":    "/issues/calendar",
-      "/n":    "/news",
-      "/d":    "/documents",
-      "/w":    "/wiki",
-      "/wiki": "/wiki",
-      "/f":    "/files",
-      "/s":    "/settings"
-    },
+    commands =  [
+      {
+        title: "Activité",
+        alias: ["/a"],
+        url: "/activity"
+      }, {
+        title: "Roadmap",
+        alias: ["/r"],
+        url: "/roadmap"
+      }, {
+        title: "Demandes",
+        alias: ["/i", "/#"],
+        url: "/issues"
+      }, {
+        title: "Nouvelle demande",
+        alias: ["/+", "/new"],
+        url: "/issues/new"
+      }, {
+        title: "Gantt",
+        alias: ["/g"],
+        url: "/issues/gantt"
+      }, {
+        title: "Calendar",
+        alias: ["/c"],
+        url: "/issues/calendar"
+      }, {
+        title: "Annonces",
+        alias: ["/n"],
+        url: "/news"
+      }, {
+        title: "Documents",
+        alias: ["/d"],
+        url: "/documents"
+      }, {
+        title: "Wiki",
+        alias: ["/w", "/wiki"],
+        url: "/wiki"
+      }, {
+        title: "Files",
+        alias: ["/f"],
+        url: "/files"
+      }, {
+        title: "Configuration",
+        alias: ["/s"],
+        url: "/settings"
+      }
+    ],
+    aliases = [],
     template = `
       <div class="Redspot">
         <i class="Redspot__icon"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25"><g fill="none" fill-rule="evenodd"><path d="M-4-4h34v34H-4z"/><path fill="#FFF" fill-rule="nonzero" d="M17.958 15.833H16.84l-.396-.382a9.168 9.168 0 0 0 2.224-5.993A9.208 9.208 0 0 0 9.458.25 9.208 9.208 0 0 0 .25 9.458a9.208 9.208 0 0 0 9.208 9.209c2.281 0 4.378-.836 5.993-2.225l.382.397v1.12l7.084 7.069 2.11-2.111-7.069-7.084zm-8.5 0a6.366 6.366 0 0 1-6.375-6.375 6.366 6.366 0 0 1 6.375-6.375 6.366 6.366 0 0 1 6.375 6.375 6.366 6.366 0 0 1-6.375 6.375z"/></g></svg></i>
+        <div class="Redspot__actionLabel"></div>
         <input type="text" placeholder="Recherche Redspot" class="Redspot__input">
         <div class="Redspot__results">
           <ul class="Redspot__resultList">
+          </ul>
+          <ul class="Redspot__help">
+            <li>Pour chaque projets :</li>
+            <li>/d Liste des demandes</li>
+            <li>/+ Nouvelle demande</li>
+            <li>/w Wiki</li>
+            <li>/s Configuration</li>
+            <li><a href="https://support.synbioz.com/projects/redmine-synbioz/wiki/Redspot" target="_blank">Et plus encore</a></li>
           </ul>
         </div>
       </div>`
     ;
 
+  function createAliases(commands) {
+    aliases = commands.reduce( function(curAliases, command){
+      // For each commands,
+      command.alias.forEach( function(alias){
+        curAliases[alias] = command;
+      })
+      return curAliases;
+    }, {})
+  }
 
   function interpreter(value) {
     return {
@@ -62,13 +112,14 @@
   }
 
   function redirecter(filtered, focusIndex, interpreted) {
-    let url = filtered;
-    if (typeof filtered !== "string") {
-      url = filtered[focusIndex].item.url
-    }
+
+    let url = filtered[focusIndex].item.url;
+
     if (interpreted.bang !== undefined) {
-      window.location = "https://support.synbioz.com/" + url.split('?').shift() + bangs[interpreted.bang]
+      // Go to page !bang of the selected project
+      window.location = "https://support.synbioz.com/" + url.split('?').shift() + aliases[interpreted.bang].url
     } else {
+      // Go to selected project
       window.location = "https://support.synbioz.com/" + url
     }
   }
@@ -101,8 +152,8 @@
     filter = new Fuse(projectList, fuse_options);
   }
 
-  function displayProjects(filtered) {
-    // console.log('displayProjects');
+  function render(filtered) {
+    // console.log('render');
     var list = [];
     filtered.forEach( function(i){
       var project = i.item;
@@ -110,7 +161,22 @@
       list.push( li )
     })
     $(resultList).html( list );
+    updateCurrentLabel();
     updateFocusedLink(currentFocusIndex);
+  }
+
+  function updateCurrentLabel() {
+    let currentBang = interpreter( redspotInput.val() ).bang;
+    let currentProject = filtered[currentFocusIndex];
+
+    if ( currentBang !== undefined && currentProject !== undefined ) {
+      let page = aliases[currentBang].title;
+      redspotLabel.html(page + ' - ' + currentProject.item.name);
+    } else if (currentProject !== undefined) {
+      redspotLabel.html('Go to ' + currentProject.item.name);
+    } else {
+      redspotLabel.html('');
+    }
   }
 
   function showRedspot() {
@@ -143,6 +209,7 @@
   function updateFocusedLink(index) {
     $('.Redspot__project--focused').removeClass('Redspot__project--focused');
     $('.Redspot__project').eq(index).addClass('Redspot__project--focused');
+    updateCurrentLabel();
   }
 
   function initControl() {
@@ -156,15 +223,16 @@
           toggleRedspot();
           break;
         case 13:
+          // Enter Key
           redirecter( filtered, currentFocusIndex, interpreter( $(this).val() ) );
           break;
         default:
           if ($(this).val().length !== lastSearchLength) {
-            currentFocusIndex = 0
+            currentFocusIndex = 0;
             lastSearchLength = $(this).val().length
             const projectName = interpreter($(this).val()).search
             filtered = filter.search(projectName);
-            displayProjects( filtered );
+            render( filtered );
           }
           break;
       }
@@ -194,7 +262,9 @@
     resultList = $('.Redspot__resultList');
     resultLinks = $('.Redspot__resultLinks');
     redspotInput = $('.Redspot__input');
+    redspotLabel = $('.Redspot__actionLabel');
     redspot = $('.Redspot');
+    createAliases(commands);
 
     $(this).on('keyup', function (e) {
       // console.log(e.keyCode)
