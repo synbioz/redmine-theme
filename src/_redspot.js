@@ -29,47 +29,55 @@
     commands =  [
       {
         title: "Activité",
-        alias: ["/a"],
+        alias: ["/a", "/activity"],
         url: "/activity"
       }, {
         title: "Roadmap",
-        alias: ["/r"],
+        alias: ["/r", "/roadmap"],
         url: "/roadmap"
       }, {
         title: "Demandes",
-        alias: ["/i", "/#"],
+        alias: ["/#", "/i", "/issues"],
         url: "/issues"
       }, {
         title: "Nouvelle demande",
-        alias: ["/+", "/new"],
+        alias: ["/+", "/n", "/new"],
         url: "/issues/new"
       }, {
         title: "Gantt",
-        alias: ["/g"],
+        alias: ["/g", "/gantt"],
         url: "/issues/gantt"
       }, {
         title: "Calendar",
-        alias: ["/c"],
+        alias: ["/c", "/calendar"],
         url: "/issues/calendar"
       }, {
         title: "Annonces",
-        alias: ["/n"],
+        alias: ["/n", "/news"],
         url: "/news"
       }, {
         title: "Documents",
-        alias: ["/d"],
+        alias: ["/d", "/documents"],
         url: "/documents"
       }, {
         title: "Wiki",
         alias: ["/w", "/wiki"],
         url: "/wiki"
       }, {
+        title: "Wiki by date",
+        alias: ["/wd"],
+        url: "/wiki/date_index"
+      }, , {
+        title: "Wiki by title",
+        alias: ["/wt"],
+        url: "/wiki/index"
+      }, {
         title: "Files",
-        alias: ["/f"],
+        alias: ["/f", "/files"],
         url: "/files"
       }, {
         title: "Configuration",
-        alias: ["/s"],
+        alias: ["/s", "/settings"],
         url: "/settings"
       }
     ],
@@ -84,7 +92,7 @@
           </ul>
           <ul class="Redspot__help">
             <li>Pour chaque projets :</li>
-            <li>/d Liste des demandes</li>
+            <li>/# Liste des demandes</li>
             <li>/+ Nouvelle demande</li>
             <li>/w Wiki</li>
             <li>/s Configuration</li>
@@ -111,18 +119,6 @@
     }
   }
 
-  function redirecter(filtered, focusIndex, interpreted) {
-
-    let url = filtered[focusIndex].item.url;
-
-    if (interpreted.bang !== undefined) {
-      // Go to page !bang of the selected project
-      window.location = "https://support.synbioz.com/" + url.split('?').shift() + aliases[interpreted.bang].url
-    } else {
-      // Go to selected project
-      window.location = "https://support.synbioz.com/" + url
-    }
-  }
 
   // Create a link for project.object
   function projectLink(project) {
@@ -157,8 +153,7 @@
     var list = [];
     filtered.forEach( function(i){
       var project = i.item;
-      var li = $('<li/>').append( projectLink(project) );
-      list.push( li )
+      list.push( projectLink(project) )
     })
     $(resultList).html( list );
     updateCurrentLabel();
@@ -212,7 +207,40 @@
     updateCurrentLabel();
   }
 
+  /*
+    Redirecter args:
+
+      filtered: Array of Object
+        list of all projects processed by fusejs
+        For each object:
+          item:
+            name: 'ffepgv'
+            url: '/projects/ifederation?jump=overview'
+          score: 0.006
+      focusIndex: Integer
+        index of the focused or clicked project (default: 0)
+      interpreted: Object
+        contain [bang] and [search] (ex: "ffe")
+  */
+
+  function redirecter(filtered, focusIndex, interpreted) {
+    let url = filtered[focusIndex].item.url;
+
+    if (interpreted.bang !== undefined) {
+      // Go to page !bang of the selected project
+      window.location = "https://support.synbioz.com/" + url.split('?').shift() + aliases[interpreted.bang].url
+    } else {
+      // Go to selected project
+      window.location = "https://support.synbioz.com/" + url
+    }
+  }
   function initControl() {
+    redspot.on('click', function(e){
+      e.preventDefault();e.stopPropagation();
+      if ($(e.target).hasClass('Redspot__project')) {
+        redirecter(filtered, $(e.target).index(), interpreter(redspotInput.val()))
+      };
+    })
     // console.log('initControl');
     redspotInput.on('keyup', function (e) {
       // console.log(e.keyCode)
