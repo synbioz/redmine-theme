@@ -1,3 +1,11 @@
+/*
+
+  Redmine Plugin v1.0.0
+
+  contact : vdarras@synbioz.com
+
+*/
+
 (function () {
 
   var
@@ -84,12 +92,13 @@
     aliases = [],
     template = `
       <div class="Redspot">
+        <a href="" target="_blank" id="new_tab_link"></a>
         <i class="Redspot__icon"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25"><g fill="none" fill-rule="evenodd"><path d="M-4-4h34v34H-4z"/><path fill="#FFF" fill-rule="nonzero" d="M17.958 15.833H16.84l-.396-.382a9.168 9.168 0 0 0 2.224-5.993A9.208 9.208 0 0 0 9.458.25 9.208 9.208 0 0 0 .25 9.458a9.208 9.208 0 0 0 9.208 9.209c2.281 0 4.378-.836 5.993-2.225l.382.397v1.12l7.084 7.069 2.11-2.111-7.069-7.084zm-8.5 0a6.366 6.366 0 0 1-6.375-6.375 6.366 6.366 0 0 1 6.375-6.375 6.366 6.366 0 0 1 6.375 6.375 6.366 6.366 0 0 1-6.375 6.375z"/></g></svg></i>
         <div class="Redspot__actionLabel"></div>
         <input type="text" placeholder="Recherche Redspot" class="Redspot__input">
         <div class="Redspot__results">
-          <ul class="Redspot__resultList">
-          </ul>
+          <div class="Redspot__resultList">
+          </div>
           <ul class="Redspot__help">
             <li>Pour chaque projets :</li>
             <li>/# Liste des demandes</li>
@@ -156,29 +165,29 @@
       list.push( projectLink(project) )
     })
     $(resultList).html( list );
-    updateCurrentLabel();
     updateFocusedLink(currentFocusIndex);
   }
 
   function updateCurrentLabel() {
+    // console.log('updateCurrentLabel');
     let currentBang = interpreter( redspotInput.val() ).bang;
     let currentProject = filtered[currentFocusIndex];
 
-    if ( currentBang !== undefined && currentProject !== undefined ) {
+    // console.log(currentBang, currentProject)
+
+    if ( currentBang !== undefined && currentBang !== "/" && currentProject !== undefined ) {
       let page = aliases[currentBang].title;
       redspotLabel.html(page + ' - ' + currentProject.item.name);
     } else if (currentProject !== undefined) {
       redspotLabel.html('Go to ' + currentProject.item.name);
     } else {
-      redspotLabel.html('');
+      redspotLabel.html('•••');
     }
   }
 
   function showRedspot() {
     // console.log('showRedspot');
-    if (projectList.length === 0) {
-      createProjectList();
-    }
+    createProjectList();
     initControl();
 
     redspot.addClass('display');
@@ -187,10 +196,14 @@
 
   function hideRedspot() {
     // console.log('hideRedspot');
-    redspot.removeClass('display');
-    redspotInput.val("");
+
     $(resultList).empty();
-    redspotInput.unbind('keyup');
+
+    redspot.removeClass('display');
+    redspot.off('click')
+
+    redspotInput.val("");
+    redspotInput.off('keyup keydown');
   }
 
   function toggleRedspot() {
@@ -202,9 +215,10 @@
   }
 
   function updateFocusedLink(index) {
+    // console.log('updateFocusedLink', index)
+    updateCurrentLabel();
     $('.Redspot__project--focused').removeClass('Redspot__project--focused');
     $('.Redspot__project').eq(index).addClass('Redspot__project--focused');
-    updateCurrentLabel();
   }
 
   /*
@@ -223,17 +237,31 @@
         contain [bang] and [search] (ex: "ffe")
   */
 
-  function redirecter(filtered, focusIndex, interpreted) {
-    let url = filtered[focusIndex].item.url;
+  function redirecter(filtered, focusIndex, interpreted, shiftPressed = false) {
+    let url = window.location.origin;;
 
-    if (interpreted.bang !== undefined) {
-      // Go to page !bang of the selected project
-      window.location = "https://support.synbioz.com/" + url.split('?').shift() + aliases[interpreted.bang].url
+    // If no project is selected
+    if (filtered[focusIndex] === undefined) {
+      // Select the current project
+      url += $('#project_quick_jump_box').val().split('?').shift()
     } else {
-      // Go to selected project
-      window.location = "https://support.synbioz.com/" + url
+      // Select the focused project
+      url += filtered[focusIndex].item.url.split('?').shift()
     }
+    // Append the /bang relative postfix
+    if (aliases[interpreted.bang] !== undefined) {
+      url += aliases[interpreted.bang].url
+    }
+    if (shiftPressed) {
+      // console.log(url)
+      $('#new_tab_link').attr('href', url)
+      $('#new_tab_link')[0].click();
+    } else {
+      return window.location = url
+    }
+
   }
+
   function initControl() {
     redspot.on('click', function(e){
       e.preventDefault();e.stopPropagation();
@@ -241,19 +269,33 @@
         redirecter(filtered, $(e.target).index(), interpreter(redspotInput.val()))
       };
     })
-    // console.log('initControl');
+
+
     redspotInput.on('keyup', function (e) {
       // console.log(e.keyCode)
       switch (e.keyCode) {
+        // Top Arrow
+        case 38:
+          e.preventDefault();e.stopPropagation();
+          currentFocusIndex = Math.max(0, currentFocusIndex-1);
+          updateFocusedLink(currentFocusIndex);
+          break;
+        // Bottom Arrow
+        case 40:
+          e.preventDefault();e.stopPropagation();
+          currentFocusIndex = Math.min(filtered.length-1, currentFocusIndex+1);
+          updateFocusedLink(currentFocusIndex);
+          break;
+        // Escape Key
         case 27:
-          // Escape Key
           e.stopPropagation();
           toggleRedspot();
           break;
+        // Enter Key
         case 13:
-          // Enter Key
-          redirecter( filtered, currentFocusIndex, interpreter( $(this).val() ) );
+          redirecter( filtered, currentFocusIndex, interpreter( $(this).val() ), e.shiftKey );
           break;
+        // Other Keys
         default:
           if ($(this).val().length !== lastSearchLength) {
             currentFocusIndex = 0;
@@ -262,22 +304,6 @@
             filtered = filter.search(projectName);
             render( filtered );
           }
-          break;
-      }
-    });
-    redspotInput.on('keydown', function(e){
-      switch (e.keyCode) {
-        case 38:
-          // arrow top
-          e.preventDefault();e.stopPropagation();
-          currentFocusIndex = Math.max(0, currentFocusIndex-1);
-          updateFocusedLink(currentFocusIndex);
-          break;
-        case 40:
-          // arrow bottom
-          e.preventDefault();e.stopPropagation();
-          currentFocusIndex = Math.min(filtered.length-1, currentFocusIndex+1);
-          updateFocusedLink(currentFocusIndex);
           break;
       }
     });
