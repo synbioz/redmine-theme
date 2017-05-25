@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-  console.log('copy to clipboard initialized')
-
   var buttonStyles = `
     .cpButton {
       display:block!important;
@@ -76,5 +74,4 @@ document.addEventListener('DOMContentLoaded', function () {
     codeBlock.appendChild(cln);
   };
 
-  console.log(codeBlocks)
 });
