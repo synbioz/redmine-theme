@@ -1,0 +1,53 @@
+@keyframes cpClick
+  0%
+    box-shadow: 0 0 10px 5px rgba($blue,0.75)
+  100%
+    box-shadow: 0 0 5px 15px rgba($blue,0)
+
+.cpButton
+  display: block
+  position: absolute
+  top: 0
+  right:  0
+  padding: .4em .6em
+  margin: 1em
+  font-size:  .75em
+  font-weight: 600
+  text-decoration: none !important
+  text-transform: uppercase
+  line-height:  1
+  color: white !important
+  background: $blue
+  border-radius:  2em
+  opacity: 0
+  cursor: pointer
+  &:after
+    content: ''
+    position: absolute
+    background: $blue
+    top: 0
+    right: 1.4em
+    width: 2em
+    height: 2em
+    opacity: 0
+    border-radius: 50%
+
+  &:not(.done):before
+    content:  'COPIER'
+
+  &.done:before
+    content:  'COPIÉ'
+
+  &:hover
+    opacity:  1
+    transition: 0.15s
+
+  &:active
+    background: $blue
+    animation: cpClick 0.1s
+
+pre
+  position: relative
+
+pre:hover .cpButton
+  opacity: 1
