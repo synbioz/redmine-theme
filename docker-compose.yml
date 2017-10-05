@@ -1,0 +1,40 @@
+version: '3.1'
+
+services:
+  proxy:
+    image: nginx
+    environment:
+      DNSDOCK_ALIAS: 'redmine.docker'
+    ports:
+      - 80
+    links:
+      - redmine
+    network_mode: bridge
+    volumes:
+      - ./config/docker/nginx/redmine.docker:/etc/nginx/conf.d/default.conf
+
+  redmine:
+    image: redmine:3.2
+    restart: always
+    ports:
+      - 3000
+    network_mode: bridge
+    links:
+      - db
+    environment:
+      REDMINE_DB_MYSQL: db
+      REDMINE_DB_PASSWORD: example
+    volumes:
+      - ./images:/usr/src/redmine/public/themes/synbioz/images
+      - ./javascripts:/usr/src/redmine/public/themes/synbioz/images
+      - ./stylesheets:/usr/src/redmine/public/themes/synbioz/stylesheets
+
+  db:
+    image: mysql:5.7
+    restart: always
+    network_mode: bridge
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: redmine
+    volumes:
+      - /var/lib/docker/data/mysql/redmine:/var/lib/mysql
