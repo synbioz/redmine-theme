@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build_css": "sass --style compressed  src/application.sass stylesheets/application.css",
-    "build_js": "babel src -o javascripts/theme.js --presets=env --source-maps --no-comments --minified",
+    "build_js": "babel src -o javascripts/theme.js --source-maps --no-comments --minified",
     "build": "npm run build_css && npm run build_js && echo '### Build Complete'",
     "deploy": "npm run build && rsync -r ./ synbioz@synbioz-www02.evolix.net:~/www/redmine/public/themes/vdarras_style_powaaaa",
     "start": "watch 'npm run build' ./src"
