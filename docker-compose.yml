@@ -26,7 +26,7 @@ services:
       REDMINE_DB_PASSWORD: example
     volumes:
       - ./images:/usr/src/redmine/public/themes/synbioz/images
-      - ./javascripts:/usr/src/redmine/public/themes/synbioz/images
+      - ./javascripts:/usr/src/redmine/public/themes/synbioz/javascripts
       - ./stylesheets:/usr/src/redmine/public/themes/synbioz/stylesheets
 
   db:
