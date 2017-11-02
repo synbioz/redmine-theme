@@ -1,26 +1,3 @@
-@keyframes appear
-  0%
-    overflow: hidden
-    height: 3em
-    max-height: 0
-    -webkit-opacity: 0
-    opacity: 0
-  100%
-    height: 3em
-    max-height: 10em
-    -webkit-opacity: 1
-    opacity: 1
-
-@keyframes contentFadeIn
-  0%
-    opacity: 0
-    transform: translateY(-10px)
-  100%
-    opacity: 1
-    transform: translateY(0)
-
-
-
 *, *:before, *:after
   box-sizing: border-box
 
@@ -50,131 +27,7 @@ a:hover, a:active
   color: $blue
   text-decoration: underline
 
-#content
-  min-height: calc(100vh - 2.8em) !important
-  max-width: 1220px
-  padding: 2em 3em
-  border: 0
-  box-shadow: none
-  // animation: contentFadeIn 0.5s ease-in-out
-  transform-origin: left top
-  // animation-duration: 0.3s
-  h2
-    padding: 0
-  & > .contextual:first-child
-    margin: 0
-    transform: translateY(-5px)
-    a
-      float: left
-      display: inline-block
-      vertical-align: top
-      background-position: left 4px center
-      font-weight: 300
-      margin: 0
-      padding: .35em .75em
-      padding-left: 24px
-      line-height: 1.4
-      border: 1px solid rgba(42, 48, 56, 0.2)
-      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 1)
-      transition: all .1s ease-in-out
-      &:not(.icon-add)
-        color: #111
-        background-color: #fafafa
-      &:hover
-        background-color: #fff
-        border-bottom-color: rgba(42, 48, 56, 0.4)
-      & + a
-        border-left: 0
-      &:first-child
-        border-radius: 3px 0 0 3px
-      &:last-child
-        border-radius: 0 3px 3px 0
-      &:first-child:last-child
-        border-radius: 3px
-      &.icon-add
-        background: $green
-        padding: .35em .75em
-        font-weight: 600
-        text-transform: uppercase
-        &:before
-          content: "+"
-          display: inline-block
-          vertical-align: baseline
-          width: 1em
-          height: 1em
-          line-height: 0.8em
-          font-size: 1.75em
-          text-align: center
-          color: #fff
-          background: #86c558
-          font-weight: 400
-          border-radius: 50%
 
-
-a.icon-add
-  display: inline-block
-  vertical-align: top
-  background-color: $green
-  color: #fff
-  font-weight: 600
-  border: 1px solid rgba(42, 48, 56, 0.3)
-  border-radius: 3px
-  margin: 0 .5em
-  padding: .35em .75em
-  font-size: 0.875em
-  line-height: 1.4
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.5), inset 0 -1px 1px rgba(0, 0, 0, 0.1), 0 1px 1px #fff
-  transition: all .1s ease-in-out
-
-.icon-add:before
-  margin-right: 0.25em
-  padding: 0
-
-
-#main
-  left: $sidebar-width
-  right: 0
-  bottom: 0
-  margin: 0
-  overflow: auto
-  background: $main-bg
-
-#main, #header
-  padding: 0
-  position: absolute
-  top: 2.125em
-
-#header
-  left: 0
-  bottom: 0
-  z-index: 1
-  overflow: hidden
-  width: $sidebar-width
-  padding: 10px 0 0
-  background: $dark-blue
-  background: $dark-blue url('../images/logo-synbioz.png') no-repeat bottom 20px center
-  background-size: 50% auto
-  box-shadow: inset 5px 0 15px rgba(0,0,0,0.1),  inset 1px 0 5px rgba(0,0,0,0.1)
-  transition: transform 0.2s ease-in-out
-  h1
-    font-size: 1.25em
-    padding: 15px 15px 0
-    white-space: nowrap
-    overflow: hidden
-    text-overflow: ellipsis
-    color: #fff
-    background: none
-  a
-    font-weight: 500
-    color: inherit
-  h1 a.ancestor
-    font-size: 100%
-
-#sidebar
-  h3
-    color: #205b75
-  a.selected
-    background-color: #398BB3
 
 img.gravatar
   position: relative
@@ -232,29 +85,6 @@ div.attachments
   background-color: aliceblue
   box-shadow: aliceblue 0px 2em 0px 3em
 
-#context-menu
-  position: fixed !important
-  .submenu:before
-    content: ''
-    position: absolute
-    background: transparent
-    top: -10%
-    left: 0
-    width: 110%
-    height: 120%
-  li.folder > ul
-    left: 145px !important
-
-
-.controller-wiki
-  #content
-    overflow: hidden
-.controller-wiki,
-.controller-boards,
-.controller-messages
-  #main #content
-    max-width: 1024px
-    margin: 0
 
 
 .edit_content .box,
@@ -279,77 +109,6 @@ div.flash.error, #errorExplanation ul
   margin: 0
   font-size: 1rem
 
-#main-menu
-  left: 0
-  top: 13em
-  bottom: 5em
-  margin: 0
-  overflow: hidden
-  overflow-y: auto
-  padding: 0
-  li
-    display: block
-    width: 100%
-    a
-      font-size: 1.14em
-      font-weight: 500
-      padding: 0.75em 0.75em 0.75em 60px
-      opacity: 0.7
-      transition: all 0.1s
-      &:not(.selected):active
-        background: rgba(255,255,255,0.3)
-      &.selected,
-      &:hover,
-      &.selected:hover
-        background: none
-        color: #fff
-        opacity: 1
-        padding-left: 4.2em
-        &:before
-          opacity: 1
-          transform: scale(1.3)
-  & > ul > li > a
-    position: relative
-    &:before
-      content: ''
-      position: absolute
-      left: 0.875em
-      top: 0.5em
-      width: 30px
-      height: 30px
-      opacity: 0.8
-      background-position: left
-      background-size: 100% 100%
-      transition: all 0.1s
-  @each $icon in $icons
-    .#{$icon}:before
-      background: url('../images/icons/#{$icon}.png') center left no-repeat
-
-#top-menu
-  position: absolute
-  z-index: 1
-  top: 0
-  left: 0
-  right: 0
-  height: 2.8em
-  padding: 0.75em 10px 0 20px
-  text-transform: uppercase
-  background: $blue
-
-.button-small, input[type="submit"]
-  -webkit-appearance: none
-  cursor: pointer
-  border: none
-  background-color: $blue
-  font-size: 1em
-  color: #fff
-  padding: 0.4em 0.8em
-  border-radius: 1em
-  transition: all 0.1s
-  &:hover
-    background-color: rgba($blue,0.8)
-    -webkit-transform: translateY(-2px)
-    transform: translateY(-2px)
 
 
 #login-form table
@@ -371,40 +130,7 @@ div.flash.error, #errorExplanation ul
   tr:last-child td:last-child
     justify-content: flex-end
 
-.actions
-  .link-button
-    border-radius: 3px
-    box-shadow: inset 0 -2px 0 rgba(0,0,0,0.1)
-    display: inline-block
-    font-size: 0.875em
-    margin: 0 3px 0 0
-    padding: 0.4em 1em
-    text-shadow: 0 1px 1px rgba(0,0,0,0.1)
-    text-transform: uppercase
-    transition: all 0.15s
-    &:hover
-      -webkit-transform: translateY(-2px)
-      transform: translateY(-2px)
-    &[href*='status_id%5D=2']
-      background: #4CA5D1
-    &[href*='status_id%5D=3']
-      background: #85BC2E
-    &[href*='status_id%5D=4']
-      background: $dark-blue
-    &[href*='status_id%5D=5']
-      background: #E96112
-    &[href*='status_id%5D=6']
-      background: #D0021B
-    &[href*='status_id%5D=14']
-      background: #EAA22B
 
-fieldset#filters
-  tr.filter
-    height: auto
-    td
-      padding: 0.25em
-  td.values input
-    height: auto
 
 
 /* FORUM */

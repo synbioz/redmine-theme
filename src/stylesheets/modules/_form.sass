@@ -12,40 +12,6 @@ textarea,
   background-color: #fff
   font-size: 1em
 
-.button-small,
-input[type="submit"],
-a[onclick^="submitPreview"]
-  float: right
-  display: inline-block
-  background-color: #fbfbfb
-  color: #333
-  font-weight: 600
-  border: 1px solid rgba($dark-blue, 0.3)
-  border-radius: 3px
-  margin: 0.5em
-  padding: 0.35em 0.75em
-  line-height: 1.4
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.5), inset 0 -1px 1px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(255, 255, 255, 1)
-  transition: all 0.1s ease-in-out
-  &:hover
-    background-color: #fff
-    color: #000
-    font-weight: 600
-    border-color: #bbb
-    transform: none
-  &[name="commit"]
-    text-shadow: 0 1px 1px rgba($dark-blue, 0.4)
-    color: #fff
-    background: $blue
-    border-color: rgba($dark-blue, 0.4)
-    &:hover
-      background: $blue
-      color: #fff
-      border-color: rgba($dark-blue, 0.5)
-
-a[onclick^="submitPreview"]
-  box-shadow: none
-  border-style: dashed
 
 
 #preview fieldset
@@ -56,6 +22,15 @@ input.hasDatepicker
 
 #query_form_content
   font-size: 1em
+
+
+fieldset#filters
+  tr.filter
+    height: auto
+    td
+      padding: 0.25em
+  td.values input
+    height: auto
 
 fieldset.collapsible
   padding: 1em
@@ -115,22 +90,3 @@ fieldset.collapsed
     background-repeat: no-repeat
     background-position: right 2px center
 
-
-a
-  &[href*="issue_categories/new"] img,
-  &[href*="versions/new"] img
-    display: none
-  &[href*="issue_categories/new"]:before,
-  &[href*="versions/new"]:before
-    content: "+"
-    display: inline-block
-    vertical-align: middle
-    width: 1em
-    height: 1em
-    line-height: 0.8em
-    font-size: 1.75em
-    text-align: center
-    color: #fff
-    background: #86c558
-    font-weight: 400
-    border-radius: 50%
