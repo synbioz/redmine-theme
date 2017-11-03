@@ -5,6 +5,7 @@ html
   overflow-y: auto
 
 body
+  font-size: 14px
   color: $black
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
@@ -33,22 +34,20 @@ img.gravatar
   position: relative
   border: 0
 
-div.issue
-  padding: 10px
-  background-color: rgba($blue,0.1)
-  border-color: rgba($blue,0.2)
-  img.gravatar
-    margin-right: 15px
-    padding: 0
-    border: 0
-    border-radius: 1px
-    box-shadow: 0 0 0 2px rgba(255,255,255,0.9), 0 1px 1px 3px rgba(0,0,0,0.2)
 
 .author
   font-style: italic
   color: grey
 p.author
   margin-top: 5px
+
+div.issue
+  img.gravatar
+    margin-right: 15px
+    padding: 0
+    border: 0
+    border-radius: 1px
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.9), 0 1px 1px 3px rgba(0,0,0,0.2)
 
 .box
   border-radius: 3px
@@ -91,23 +90,13 @@ div.attachments
 .new_issue .box,
 .controller-issues .issue.details,
 #query_form_content .collapsible:not(.collapsed)
+  clear: both
+  padding: 1em 0
+  margin: 1em 0
+  background-color: rgba($blue,0.1)
   border: 0
   box-shadow: 3em 0 0 rgba(76, 165, 209, 0.1), -3em 0 0 rgba(76, 165, 209, 0.1)
 
-
-div.flash.error, #errorExplanation
-  background-color: tomato
-  border: 0
-  color: #fff
-  text-transform: uppercase
-  font-weight: 600
-  transition: appear 0.3s ease-in-out
-
-div.flash.error, #errorExplanation ul
-  list-style: none
-  padding: 0.5em
-  margin: 0
-  font-size: 1rem
 
 
 

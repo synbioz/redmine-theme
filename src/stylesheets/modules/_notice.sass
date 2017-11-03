@@ -1,0 +1,32 @@
+div.flash
+  position: fixed
+  bottom: 0
+  right: 0
+  margin: 1em
+  padding: 1em
+  border: 0
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1)
+  background: #fff
+  color: $black
+  animation: noticeAppear 0.16s ease-in-out
+  &.notice
+    background: $green
+    color: #fff
+  &.error
+    background-color: tomato
+    color: #fff
+
+
+#errorExplanation
+  background-color: tomato
+  border: 0
+  color: #fff
+  text-transform: uppercase
+  font-weight: 600
+  transition: noticeAppear 0.16s ease-in-out
+
+div.flash.error, #errorExplanation ul
+  list-style: none
+  padding: 0.5em
+  margin: 0
+  font-size: 1rem
