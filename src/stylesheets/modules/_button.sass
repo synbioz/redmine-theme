@@ -1,19 +1,47 @@
-.button-small, input[type="submit"]
+@mixin button-style
   -webkit-appearance: none
+  display: inline-block
+  vertical-align: top
   cursor: pointer
-  border: none
-  background-color: $blue
+  margin: 0
+  padding: 0.35em 0.75em
   font-size: 1em
-  color: #fff
-  padding: 0.4em 0.8em
-  border-radius: 1em
-  transition: all 0.1s
+  font-weight: 500
+  line-height: 1.4
+  border-radius: $radius
+  border: 1px solid rgba(42, 48, 56, 0.1)
+  border-bottom-color: rgba(42, 48, 56, 0.2)
+  background-color: #FFF
+  color: $black
+  transition: all 0.16s ease-in-out
   &:hover
-    background-color: rgba($blue,0.8)
-    -webkit-transform: translateY(-2px)
-    transform: translateY(-2px)
+    z-index: 1
+    text-decoration: none
+    border-color: rgba(42, 48, 56, 0.3)
+    border-bottom-color: rgba(42, 48, 56, 0.5)
 
+@mixin button-by-group
+  & + a
+    margin-left: -1px
+  &:first-child
+    border-radius: $radius 0 0 $radius
+  &:last-child
+    border-radius: 0 $radius $radius 0
 
+// .button-small,
+// input[type="submit"]
+//   border: none
+//   background-color: $blue
+//   font-size: 1em
+//   color: #fff
+//   padding: 0.4em 0.8em
+//   border-radius: 1em
+//   &:hover
+//     background-color: rgba($blue,0.8)
+//     -webkit-transform: translateY(-2px)
+//     transform: translateY(-2px)
+
+// Issue States Redmine plugin
 .actions
   .link-button
     border-radius: 3px
@@ -41,42 +69,29 @@
     &[href*='status_id%5D=14']
       background: #EAA22B
 
-.contextual
-  margin: 0
-  transform: translateY(-5px)
-  font-size: 1em
+#content > .contextual
+  margin: 0 0 1em
+  font-size: 0.875em
   height: 2em
   display: flex
   align-items: center
   justify-content: flex-end
   a
-    flex: 0 1 auto
+    +button-style
+    +button-by-group
     display: flex
+    flex: 0 1 auto
+    margin: 0
+    padding: 0 0.75em
+    padding-left: 2em
     align-items: center
     align-self: stretch
-    background-position: left 4px center
-    font-weight: 300
-    font-size: 1em
-    margin: 0
-    padding: 0 .75em
-    padding-left: 2em
-    border: 1px solid rgba(42, 48, 56, 0.1)
-    border-bottom-color: rgba(42, 48, 56, 0.2)
-    transition: all .1s ease-in-out
-    &:not(.icon-add)
-      color: #111
-      background-color: #fafafa
-    &:hover
-      text-decoration: none
-      box-shadow: 0 2px 7px rgba(0,0,0,0.15)
-    & + a
-      border-left: 0
-    &:first-child
-      border-radius: 3px 0 0 3px
-    &:last-child
-      border-radius: 0 3px 3px 0
-    &:first-child:last-child
-      border-radius: 3px
+    border-radius: 0
+    font-weight: 400
+    background-position: 0.5em center
+    &.icon-edit
+      order: 1
+      font-weight: 500
     &.icon-add
       padding-left: .25em !important
       font-weight: 600 !important
@@ -98,44 +113,31 @@
         background: #86c558
         font-weight: 400
         border-radius: 50%
+  &:first-child a
+    &.icon-edit
+      background-color: $blue
+      color: #fff
 
 
 
 .button-small,
 input[type="submit"],
-a[onclick^="submitPreview"]
+a[onclick^="submitPreview"],
+#update > form > a:last-child
+  +button-style
+  +button-by-group
   float: right
-  display: inline-block
-  background-color: #fbfbfb
-  color: #333
-  font-weight: 600
-  border: 1px solid rgba($dark-blue, 0.3)
-  border-radius: 3px
-  margin: 0.5em
-  padding: 0.35em 0.75em
-  line-height: 1.4
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.5), inset 0 -1px 1px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(255, 255, 255, 1)
-  transition: all 0.1s ease-in-out
-  &:hover
-    background-color: #fff
-    color: #000
-    font-weight: 600
-    border-color: #bbb
-    transform: none
+  margin-bottom: 1em
   &[name="commit"]
-    text-shadow: 0 1px 1px rgba($dark-blue, 0.4)
+    background: $green
+    border-color: rgba($dark-green, 0.4)
     color: #fff
-    background: $blue
-    border-color: rgba($dark-blue, 0.4)
+    font-weight: 600
+    text-shadow: 0 1px 1px rgba($dark-green, 0.4)
     &:hover
-      background: $blue
+      background: $green
       color: #fff
-      border-color: rgba($dark-blue, 0.5)
-
-a[onclick^="submitPreview"]
-  box-shadow: none
-  border-style: dashed
-
+      border-color: $dark-green
 
 a
   &[href*="issue_categories/new"] img,
