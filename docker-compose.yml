@@ -28,6 +28,8 @@ services:
       - ./images:/usr/src/redmine/public/themes/synbioz/images
       - ./javascripts:/usr/src/redmine/public/themes/synbioz/javascripts
       - ./stylesheets:/usr/src/redmine/public/themes/synbioz/stylesheets
+      - ./plugins:/usr/src/redmine/plugins
+      - ./plugins/redspot/assets:/usr/src/redmine/public/plugin_assets/redspot
 
   db:
     image: mysql:5.7
