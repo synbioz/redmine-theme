@@ -2,7 +2,7 @@
 
 ~~~bash
 npm install -g babel-cli
-gem install watch
+bundle install
 ~~~
 
 ## **Watch** and **build** the sources :
