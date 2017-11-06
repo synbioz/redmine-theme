@@ -61,12 +61,19 @@ html > body #content
   display: inline-block
   vertical-align: top
   width: 75%
-  padding: 2em 3em
+  padding: 2em 3em 5em
   border: 0
   border-right: 1px solid rgba(0,0,0,0.1)
   box-shadow: none
   h2
     padding: 0
+
+#main.nosidebar #content
+  display: block
+  max-width: $max-width
+  width: auto
+  border-right: 1px solid rgba(0,0,0,0.1)
+
 
 #sidebar
   // flex: 1 0 25%
@@ -88,7 +95,7 @@ html > body #content
 .controller-boards,
 .controller-messages
   #main #content
-    max-width: 1024px
+    max-width: $max-width
     padding-bottom: 4em
     margin: 0
     overflow: hidden
