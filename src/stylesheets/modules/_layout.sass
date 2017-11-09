@@ -1,5 +1,5 @@
-.Redspot
-  z-index: 10
+html > body #content
+  min-height: 100%
 
 #wrapper3
   display: flex
@@ -23,13 +23,6 @@
 
 #main, #header
   padding: 0
-
-#main
-  display: flex
-  margin: 0
-  height: calc( 100% - 2.25em )
-  overflow: auto
-  background: $main-bg
 
 #header
   z-index: 1
@@ -55,32 +48,57 @@
   h1 a.ancestor
     font-size: 100%
 
+#main
+  align-items: stretch
+  // display: flex
+  margin: 0
+  height: calc( 100% - 2.25em )
+  overflow: auto
+  background: $main-bg
 
-#main.nosidebar #content,
 #content
-  width: auto
-  flex: 1 1 75%
-  padding: 2em 3em
+  // flex: 1 1 75%
+  display: inline-block
+  vertical-align: top
+  width: 75%
+  padding: 2em 3em 5em
   border: 0
   border-right: 1px solid rgba(0,0,0,0.1)
   box-shadow: none
   h2
     padding: 0
 
-html > body #content
-  min-height: 100%
+#main.nosidebar #content
+  display: block
+  max-width: $max-width
+  width: auto
+  border-right: 1px solid rgba(0,0,0,0.1)
 
 
 #sidebar
-  width: auto
-  flex: 1 0 25%
-  padding: 1em 1.5em
+  // flex: 1 0 25%
+  display: inline-block
+  vertical-align: top
+  width: 25%
   order: 1
+  z-index: 11
+  padding: 1em 1.5em
+  background: #fff
   h3
     color: #205b75
   a.selected
     background-color: #398BB3
 
+
+
+.controller-wiki,
+.controller-boards,
+.controller-messages
+  #main #content
+    max-width: $max-width
+    padding-bottom: 4em
+    margin: 0
+    overflow: hidden
 
 #main-menu
   left: 0
@@ -129,14 +147,6 @@ html > body #content
       background: url('../images/icons/#{$icon}.png') center left no-repeat
 
 
-
-.controller-wiki,
-.controller-boards,
-.controller-messages
-  #main #content
-    max-width: 1024px
-    margin: 0
-    padding-bottom: 4em
 
 
 #footer
