@@ -1,5 +1,7 @@
 ## Install dependencies :
 
+Current version : `1.0.0`
+
 ~~~bash
 npm install -g babel-cli
 bundle install
